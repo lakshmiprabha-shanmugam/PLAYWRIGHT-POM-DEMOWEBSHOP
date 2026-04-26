@@ -1,10 +1,6 @@
-// Jenkinsfile — place in repository root
+// Jenkinsfile — Windows Jenkins, no tools block needed (Node.js on system PATH)
 pipeline {
   agent any
-
-  tools {
-    nodejs 'NodeJS'    // Must match name in Global Tool Configuration
-  }
 
   environment {
     BASE_URL           = 'https://demowebshop.tricentis.com/'
@@ -31,23 +27,23 @@ pipeline {
     stage('Checkout') {
       steps {
         checkout scm
-        echo "Branch: ${env.BRANCH_NAME} | Build: ${env.BUILD_NUMBER}"
+        echo "Build: ${env.BUILD_NUMBER}"
       }
     }
 
     stage('Install Dependencies') {
-      steps { sh 'npm ci' }
+      steps { bat 'npm ci' }
     }
 
     stage('Install Playwright Browsers') {
       steps {
-        sh 'npx playwright install --with-deps chromium'
+        bat 'npx playwright install --with-deps chromium'
         script {
           if (params.BROWSER == 'chrome' || params.BROWSER == 'all') {
-            sh 'npx playwright install --with-deps chrome'
+            bat 'npx playwright install --with-deps chrome'
           }
           if (params.BROWSER == 'firefox' || params.BROWSER == 'all') {
-            sh 'npx playwright install --with-deps firefox'
+            bat 'npx playwright install --with-deps firefox'
           }
         }
       }
@@ -64,14 +60,14 @@ pipeline {
             : params.TEST_SUITE == 'regression'
               ? ''
               : "tests/${params.TEST_SUITE}.spec.ts"
-          sh "npx playwright test ${browser} ${suite}"
+          bat "npx playwright test ${browser} ${suite}"
         }
       }
     }
 
     stage('Generate Allure Report') {
       steps {
-        sh 'npx allure generate allure-results --clean -o allure-report'
+        bat 'npx allure generate allure-results --clean -o allure-report'
       }
     }
   }
@@ -79,10 +75,8 @@ pipeline {
   post {
     always {
 
-      // JUnit XML — populates Jenkins test trend charts
-      junit 'results.xml'
+      junit allowEmptyResults: true, testResults: 'results.xml'
 
-      // Allure Report — interactive test report in Jenkins UI
       allure([
         includeProperties: false,
         jdk              : '',
@@ -91,9 +85,8 @@ pipeline {
         results          : [[path: 'allure-results']]
       ])
 
-      // HTML Publisher — Playwright report inline in Jenkins UI
       publishHTML([
-        allowMissing         : false,
+        allowMissing         : true,
         alwaysLinkToLastBuild: true,
         keepAll              : true,
         reportDir            : 'playwright-report',
@@ -101,9 +94,8 @@ pipeline {
         reportName           : 'Playwright Test Report'
       ])
 
-      // HTML Publisher — Allure report as static HTML fallback
       publishHTML([
-        allowMissing         : false,
+        allowMissing         : true,
         alwaysLinkToLastBuild: true,
         keepAll              : true,
         reportDir            : 'allure-report',
@@ -111,14 +103,11 @@ pipeline {
         reportName           : 'Allure Test Report'
       ])
 
-      // Archive screenshots and traces for debugging
       archiveArtifacts artifacts: 'test-results/**/*', allowEmptyArchive: true
-
-      // Archive Allure results for history tracking across builds
       archiveArtifacts artifacts: 'allure-results/**/*', allowEmptyArchive: true
     }
     success { echo 'All Playwright tests passed!' }
     failure { echo 'Tests failed — check the Playwright and Allure reports.' }
-    cleanup { cleanWs() }    // Clean workspace after every build
+    cleanup { cleanWs() }
   }
 }
