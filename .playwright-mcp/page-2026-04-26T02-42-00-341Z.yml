@@ -1,0 +1,297 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - link "Tricentis Demo Web Shop" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "Tricentis Demo Web Shop" [ref=e7]
+      - list [ref=e10]:
+        - listitem [ref=e11]:
+          - link "lakshmishan@gmail.com" [ref=e12] [cursor=pointer]:
+            - /url: /customer/info
+        - listitem [ref=e13]:
+          - link "Log out" [ref=e14] [cursor=pointer]:
+            - /url: /logout
+        - listitem [ref=e15]:
+          - link "Shopping cart (0)" [ref=e16] [cursor=pointer]:
+            - /url: /cart
+            - generic [ref=e17]: Shopping cart
+            - generic [ref=e18]: (0)
+        - listitem [ref=e19]:
+          - link "Wishlist (0)" [ref=e20] [cursor=pointer]:
+            - /url: /wishlist
+            - generic [ref=e21]: Wishlist
+            - generic [ref=e22]: (0)
+      - generic [ref=e24]:
+        - status [ref=e25]
+        - textbox [ref=e26]: Search store
+        - button "Search" [ref=e27] [cursor=pointer]
+    - list [ref=e29]:
+      - listitem [ref=e30]:
+        - link "Books" [ref=e31] [cursor=pointer]:
+          - /url: /books
+      - listitem [ref=e32]:
+        - link "Computers" [ref=e33] [cursor=pointer]:
+          - /url: /computers
+      - listitem [ref=e34]:
+        - link "Electronics" [ref=e35] [cursor=pointer]:
+          - /url: /electronics
+      - listitem [ref=e36]:
+        - link "Apparel & Shoes" [ref=e37] [cursor=pointer]:
+          - /url: /apparel-shoes
+      - listitem [ref=e38]:
+        - link "Digital downloads" [ref=e39] [cursor=pointer]:
+          - /url: /digital-downloads
+      - listitem [ref=e40]:
+        - link "Jewelry" [ref=e41] [cursor=pointer]:
+          - /url: /jewelry
+      - listitem [ref=e42]:
+        - link "Gift Cards" [ref=e43] [cursor=pointer]:
+          - /url: /gift-cards
+    - generic [ref=e44]:
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - strong [ref=e48]: Categories
+          - list [ref=e50]:
+            - listitem [ref=e51]:
+              - link "Books" [ref=e52] [cursor=pointer]:
+                - /url: /books
+            - listitem [ref=e53]:
+              - link "Computers" [ref=e54] [cursor=pointer]:
+                - /url: /computers
+            - listitem [ref=e55]:
+              - link "Electronics" [ref=e56] [cursor=pointer]:
+                - /url: /electronics
+            - listitem [ref=e57]:
+              - link "Apparel & Shoes" [ref=e58] [cursor=pointer]:
+                - /url: /apparel-shoes
+            - listitem [ref=e59]:
+              - link "Digital downloads" [ref=e60] [cursor=pointer]:
+                - /url: /digital-downloads
+            - listitem [ref=e61]:
+              - link "Jewelry" [ref=e62] [cursor=pointer]:
+                - /url: /jewelry
+            - listitem [ref=e63]:
+              - link "Gift Cards" [ref=e64] [cursor=pointer]:
+                - /url: /gift-cards
+        - generic [ref=e65]:
+          - strong [ref=e67]: Manufacturers
+          - list [ref=e69]:
+            - listitem [ref=e70]:
+              - link "Tricentis" [ref=e71] [cursor=pointer]:
+                - /url: /tricentis
+        - generic [ref=e72]:
+          - strong [ref=e74]: Newsletter
+          - generic [ref=e76]:
+            - text: "Sign up for our newsletter:"
+            - textbox [ref=e78]
+            - button "Subscribe" [ref=e80] [cursor=pointer]
+      - generic [ref=e81]:
+        - list [ref=e83]:
+          - listitem [ref=e84]:
+            - link "Home" [ref=e86] [cursor=pointer]:
+              - /url: /
+            - text: /
+          - listitem [ref=e87]:
+            - link "Jewelry" [ref=e89] [cursor=pointer]:
+              - /url: /jewelry
+            - text: /
+          - listitem [ref=e90]:
+            - strong [ref=e91]: Diamond Pave Earrings
+        - generic [ref=e95]:
+          - generic [ref=e96]:
+            - img "Picture of Diamond Pave Earrings" [ref=e99]
+            - generic [ref=e100]:
+              - heading "Diamond Pave Earrings" [level=1] [ref=e102]
+              - generic [ref=e103]: 1/2 Carat (ctw) in White Gold
+              - generic [ref=e104]: "Availability: Out of stock"
+              - generic [ref=e109]:
+                - link "229 review(s)" [ref=e110] [cursor=pointer]:
+                  - /url: /productreviews/25
+                - text: "|"
+                - link "Add your review" [ref=e111] [cursor=pointer]:
+                  - /url: /productreviews/25
+              - generic [ref=e113]: "569.00"
+              - button "Email a friend" [ref=e116] [cursor=pointer]
+              - button "Add to compare list" [ref=e118] [cursor=pointer]
+            - paragraph [ref=e120]: Perfect for both a professional look as well as perhaps something more sensual, these 10 karat white gold huggie earrings boast 86 sparkling round diamonds set in a pave arrangement that total 1/2 carat (ctw).
+          - generic [ref=e121]:
+            - generic [ref=e122]:
+              - strong [ref=e124]: PRICE BREAKS - The more you buy, the more you save
+              - table [ref=e126]:
+                - rowgroup [ref=e127]:
+                  - row "Quantity 5+" [ref=e128]:
+                    - cell "Quantity" [ref=e129]
+                    - cell "5+" [ref=e130]
+                  - row "Price 350.00" [ref=e131]:
+                    - cell "Price" [ref=e132]
+                    - cell "350.00" [ref=e133]
+            - generic [ref=e134]:
+              - strong [ref=e136]: Product tags
+              - generic:
+                - list:
+                  - listitem [ref=e137]:
+                    - link "awesome" [ref=e138] [cursor=pointer]:
+                      - /url: /producttag/8/awesome
+                    - text: (20)
+                  - listitem [ref=e139]: ","
+                  - listitem [ref=e140]:
+                    - link "jewelry" [ref=e141] [cursor=pointer]:
+                      - /url: /producttag/11/jewelry
+                    - text: (4)
+            - generic [ref=e142]:
+              - strong [ref=e144]: Customers who bought this item also bought
+              - generic [ref=e146]:
+                - link "Picture of Blue Jeans" [ref=e148] [cursor=pointer]:
+                  - /url: /blue-jeans
+                  - img "Picture of Blue Jeans" [ref=e149]
+                - generic [ref=e150]:
+                  - heading "Blue Jeans" [level=2] [ref=e151]:
+                    - link "Blue Jeans" [ref=e152] [cursor=pointer]:
+                      - /url: /blue-jeans
+                  - generic "656 review(s)" [ref=e153]
+                  - generic [ref=e156]:
+                    - generic [ref=e158]: "1.00"
+                    - button "Add to cart" [ref=e160] [cursor=pointer]
+              - generic [ref=e162]:
+                - link "Picture of Build your own cheap computer" [ref=e164] [cursor=pointer]:
+                  - /url: /build-your-cheap-own-computer
+                  - img "Picture of Build your own cheap computer" [ref=e165]
+                - generic [ref=e166]:
+                  - heading "Build your own cheap computer" [level=2] [ref=e167]:
+                    - link "Build your own cheap computer" [ref=e168] [cursor=pointer]:
+                      - /url: /build-your-cheap-own-computer
+                  - generic "837 review(s)" [ref=e169]
+                  - generic [ref=e172]:
+                    - generic [ref=e174]: "800.00"
+                    - button "Add to cart" [ref=e176] [cursor=pointer]
+              - generic [ref=e178]:
+                - link "Picture of TCP Instructor Led Training" [ref=e180] [cursor=pointer]:
+                  - /url: /copy-of-tcp-self-paced-training-2
+                  - img "Picture of TCP Instructor Led Training" [ref=e181]
+                - generic [ref=e182]:
+                  - heading "TCP Instructor Led Training" [level=2] [ref=e183]:
+                    - link "TCP Instructor Led Training" [ref=e184] [cursor=pointer]:
+                      - /url: /copy-of-tcp-self-paced-training-2
+                  - generic "152 review(s)" [ref=e185]
+                  - generic [ref=e188]:
+                    - generic [ref=e190]: "9000.00"
+                    - button "Add to cart" [ref=e192] [cursor=pointer]
+            - generic [ref=e193]:
+              - strong [ref=e195]: Related products
+              - generic [ref=e197]:
+                - link "Picture of Black & White Diamond Heart" [ref=e199] [cursor=pointer]:
+                  - /url: /black-white-diamond-heart
+                  - img "Picture of Black & White Diamond Heart" [ref=e200]
+                - generic [ref=e201]:
+                  - heading "Black & White Diamond Heart" [level=2] [ref=e202]:
+                    - link "Black & White Diamond Heart" [ref=e203] [cursor=pointer]:
+                      - /url: /black-white-diamond-heart
+                  - generic "640 review(s)" [ref=e204]
+                  - generic [ref=e207]:
+                    - generic [ref=e209]: "130.00"
+                    - button "Add to cart" [ref=e211] [cursor=pointer]
+              - generic [ref=e213]:
+                - link "Picture of Diamond Tennis Bracelet" [ref=e215] [cursor=pointer]:
+                  - /url: /diamond-tennis-bracelet
+                  - img "Picture of Diamond Tennis Bracelet" [ref=e216]
+                - generic [ref=e217]:
+                  - heading "Diamond Tennis Bracelet" [level=2] [ref=e218]:
+                    - link "Diamond Tennis Bracelet" [ref=e219] [cursor=pointer]:
+                      - /url: /diamond-tennis-bracelet
+                  - generic "321 review(s)" [ref=e220]
+                  - generic [ref=e225]: "360.00"
+              - generic [ref=e227]:
+                - link "Picture of Vintage Style Three Stone Diamond Engagement Ring" [ref=e229] [cursor=pointer]:
+                  - /url: /vintage-style-three-stone-diamond-engagement-ring
+                  - img "Picture of Vintage Style Three Stone Diamond Engagement Ring" [ref=e230]
+                - generic [ref=e231]:
+                  - heading "Vintage Style Three Stone Diamond Engagement Ring" [level=2] [ref=e232]:
+                    - link "Vintage Style Three Stone Diamond Engagement Ring" [ref=e233] [cursor=pointer]:
+                      - /url: /vintage-style-three-stone-diamond-engagement-ring
+                  - generic "342 review(s)" [ref=e234]
+                  - generic [ref=e239]: "2100.00"
+  - generic [ref=e240]:
+    - generic [ref=e241]:
+      - generic [ref=e242]:
+        - heading "Information" [level=3] [ref=e243]
+        - list [ref=e244]:
+          - listitem [ref=e245]:
+            - link "Sitemap" [ref=e246] [cursor=pointer]:
+              - /url: /sitemap
+          - listitem [ref=e247]:
+            - link "Shipping & Returns" [ref=e248] [cursor=pointer]:
+              - /url: /shipping-returns
+          - listitem [ref=e249]:
+            - link "Privacy Notice" [ref=e250] [cursor=pointer]:
+              - /url: /privacy-policy
+          - listitem [ref=e251]:
+            - link "Conditions of Use" [ref=e252] [cursor=pointer]:
+              - /url: /conditions-of-use
+          - listitem [ref=e253]:
+            - link "About us" [ref=e254] [cursor=pointer]:
+              - /url: /about-us
+          - listitem [ref=e255]:
+            - link "Contact us" [ref=e256] [cursor=pointer]:
+              - /url: /contactus
+      - generic [ref=e257]:
+        - heading "Customer service" [level=3] [ref=e258]
+        - list [ref=e259]:
+          - listitem [ref=e260]:
+            - link "Search" [ref=e261] [cursor=pointer]:
+              - /url: /search
+          - listitem [ref=e262]:
+            - link "News" [ref=e263] [cursor=pointer]:
+              - /url: /news
+          - listitem [ref=e264]:
+            - link "Blog" [ref=e265] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=e266]:
+            - link "Recently viewed products" [ref=e267] [cursor=pointer]:
+              - /url: /recentlyviewedproducts
+          - listitem [ref=e268]:
+            - link "Compare products list" [ref=e269] [cursor=pointer]:
+              - /url: /compareproducts
+          - listitem [ref=e270]:
+            - link "New products" [ref=e271] [cursor=pointer]:
+              - /url: /newproducts
+      - generic [ref=e272]:
+        - heading "My account" [level=3] [ref=e273]
+        - list [ref=e274]:
+          - listitem [ref=e275]:
+            - link "My account" [ref=e276] [cursor=pointer]:
+              - /url: /customer/info
+          - listitem [ref=e277]:
+            - link "Orders" [ref=e278] [cursor=pointer]:
+              - /url: /customer/orders
+          - listitem [ref=e279]:
+            - link "Addresses" [ref=e280] [cursor=pointer]:
+              - /url: /customer/addresses
+          - listitem [ref=e281]:
+            - link "Shopping cart" [ref=e282] [cursor=pointer]:
+              - /url: /cart
+          - listitem [ref=e283]:
+            - link "Wishlist" [ref=e284] [cursor=pointer]:
+              - /url: /wishlist
+      - generic [ref=e285]:
+        - heading "Follow us" [level=3] [ref=e286]
+        - list [ref=e287]:
+          - listitem [ref=e288]:
+            - link "Facebook" [ref=e289] [cursor=pointer]:
+              - /url: http://www.facebook.com/nopCommerce
+          - listitem [ref=e290]:
+            - link "Twitter" [ref=e291] [cursor=pointer]:
+              - /url: https://twitter.com/nopCommerce
+          - listitem [ref=e292]:
+            - link "RSS" [ref=e293] [cursor=pointer]:
+              - /url: /news/rss/1
+          - listitem [ref=e294]:
+            - link "YouTube" [ref=e295] [cursor=pointer]:
+              - /url: http://www.youtube.com/user/nopCommerce
+          - listitem [ref=e296]:
+            - link "Google+" [ref=e297] [cursor=pointer]:
+              - /url: https://plus.google.com/+nopcommerce
+    - generic [ref=e298]:
+      - text: Powered by
+      - link "nopCommerce" [ref=e299] [cursor=pointer]:
+        - /url: http://www.nopcommerce.com/
+    - generic [ref=e300]: Copyright © 2026 Tricentis Demo Web Shop. All rights reserved.

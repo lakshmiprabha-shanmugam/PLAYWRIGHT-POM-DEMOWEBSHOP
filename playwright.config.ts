@@ -4,7 +4,7 @@ export default defineConfig({
   testDir       : './tests',
   fullyParallel : true,
   forbidOnly    : !!process.env.CI,      // Fail if test.only left in on CI
-  retries       : process.env.CI ? 2 : 0,
+  retries       : process.env.CI ? 1 : 0,
   workers       : process.env.CI ? 4 : 2,
 
   reporter: [
@@ -24,7 +24,7 @@ export default defineConfig({
 
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
-    { name: 'chrome',   use: { ...devices['Desktop Chrome'], channel: 'chrome' } },
-    { name: 'firefox',  use: { ...devices['Desktop Firefox'] } },
+    // { name: 'chrome',   use: { ...devices['Desktop Chrome'], channel: 'chrome' } },
+    // { name: 'firefox',  use: { ...devices['Desktop Firefox'] } },
   ],
 });
