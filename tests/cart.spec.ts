@@ -6,11 +6,12 @@ import { url } from './config/testConfig';
 async function addProductToCart(page: Page, searchTerm: string): Promise<void> {
   await page.goto(url(`/search?q=${encodeURIComponent(searchTerm)}`));
   await page.locator('.product-title a').first().click();
-  const cartResponse = page.waitForResponse(
-    resp => resp.url().includes('/addproducttocart/') && resp.status() === 200
-  );
-  await page.locator('input[value="Add to cart"]').click();
-  await cartResponse;
+  const addToCartButton = page.locator('.product-essential input[value="Add to cart"]').first();
+  await addToCartButton.waitFor({ state: 'visible' });
+  await Promise.all([
+    page.waitForResponse(resp => resp.url().includes('/addproducttocart/') && resp.status() === 200),
+    addToCartButton.click(),
+  ]);
 }
 
 test.describe('4.5 Shopping Cart', () => {
