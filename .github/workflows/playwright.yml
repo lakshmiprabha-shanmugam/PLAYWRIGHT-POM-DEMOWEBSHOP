@@ -36,12 +36,24 @@ jobs:
           TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
           TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
 
+      - name: Validate Allure smoke results
+        if: always()
+        run: |
+          result_count=$(find allure-results -name '*-result.json' | wc -l)
+          echo "Allure result files: $result_count"
+          if [ "$result_count" -eq 0 ]; then
+            echo "No Allure result files found in allure-results/"
+            exit 1
+          fi
+          node -e "const summary=require('./allure-report/widgets/summary.json'); const total=summary.statistic?.total ?? 0; console.log('Allure report tests:', total); if (total === 0) process.exit(1);"
+
       - name: Upload Playwright HTML report
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: playwright-report-${{ github.run_number }}
           path: playwright-report/
+          if-no-files-found: error
           retention-days: 30
 
       - name: Upload Allure HTML report
@@ -50,6 +62,7 @@ jobs:
         with:
           name: allure-report-${{ github.run_number }}
           path: allure-report/
+          if-no-files-found: error
           retention-days: 30
 
       - name: Upload Allure results
@@ -58,6 +71,7 @@ jobs:
         with:
           name: allure-results-${{ github.run_number }}
           path: allure-results/
+          if-no-files-found: error
           retention-days: 30
 
       - name: Upload JUnit results
@@ -66,6 +80,7 @@ jobs:
         with:
           name: junit-results-${{ github.run_number }}
           path: results.xml
+          if-no-files-found: error
           retention-days: 30
 
       - name: Upload test results on failure
@@ -119,12 +134,24 @@ jobs:
           TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
           TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
 
+      - name: Validate Allure accessibility results
+        if: always()
+        run: |
+          result_count=$(find allure-results -name '*-result.json' | wc -l)
+          echo "Allure result files: $result_count"
+          if [ "$result_count" -eq 0 ]; then
+            echo "No Allure result files found in allure-results/"
+            exit 1
+          fi
+          node -e "const summary=require('./allure-report/widgets/summary.json'); const total=summary.statistic?.total ?? 0; console.log('Allure report tests:', total); if (total === 0) process.exit(1);"
+
       - name: Upload accessibility Playwright HTML report
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: accessibility-playwright-report-${{ github.run_number }}
           path: playwright-report/
+          if-no-files-found: error
           retention-days: 30
 
       - name: Upload accessibility Allure HTML report
@@ -133,6 +160,7 @@ jobs:
         with:
           name: accessibility-allure-report-${{ github.run_number }}
           path: allure-report/
+          if-no-files-found: error
           retention-days: 30
 
       - name: Upload accessibility Allure results
@@ -141,6 +169,7 @@ jobs:
         with:
           name: accessibility-allure-results-${{ github.run_number }}
           path: allure-results/
+          if-no-files-found: error
           retention-days: 30
 
       - name: Upload accessibility JUnit results
@@ -149,6 +178,7 @@ jobs:
         with:
           name: accessibility-junit-results-${{ github.run_number }}
           path: results.xml
+          if-no-files-found: error
           retention-days: 30
 
       - name: Upload accessibility test results on failure
