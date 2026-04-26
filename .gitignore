@@ -8,3 +8,5 @@ playwright-report/
 dist/
 .env
 .env.local
+allure-results/
+allure-report/

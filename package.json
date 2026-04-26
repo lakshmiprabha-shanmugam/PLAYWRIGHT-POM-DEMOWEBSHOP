@@ -7,6 +7,9 @@
     "test": "playwright test",
     "test:login": "playwright test tests/login.spec.ts",
     "test:register": "playwright test tests/register.spec.ts",
+    "allure:clean": "node -e \"const fs=require('fs'); ['allure-results','allure-report'].forEach(path=>fs.rmSync(path,{recursive:true,force:true}));\"",
+    "test:allure": "node scripts/run-playwright-allure.cjs",
+    "test:smoke": "node scripts/run-playwright-allure.cjs --project=chromium --grep \"@smoke\"",
     "allure:generate": "allure generate allure-results --clean -o allure-report",
     "allure:open": "allure open allure-report",
     "allure:serve": "allure serve allure-results"

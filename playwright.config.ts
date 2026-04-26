@@ -1,4 +1,14 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices, type ReporterDescription } from '@playwright/test';
+
+const reporters: ReporterDescription[] = [
+  ['html',  { open: 'never' }],
+  ['junit', { outputFile: 'results.xml' }],
+  ['allure-playwright', { outputFolder: 'allure-results' }],
+];
+
+if (process.env.GITHUB_ACTIONS) {
+  reporters.push(['github']);
+}
 
 export default defineConfig({
   testDir       : './tests',
@@ -7,12 +17,7 @@ export default defineConfig({
   retries       : process.env.CI ? 1 : 0,
   workers       : process.env.CI ? 4 : 2,
 
-  reporter: [
-    ['html',  { open: 'never' }],
-    ['junit', { outputFile: 'results.xml' }],   // Jenkins test trend charts
-    ['github'],                                  // PR annotations in GitHub
-    ['allure-playwright', { outputFolder: 'allure-results' }],
-  ],
+  reporter: reporters,
 
   use: {
     baseURL        : process.env.BASE_URL || 'https://demowebshop.tricentis.com/',
@@ -24,7 +29,7 @@ export default defineConfig({
 
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
-    // { name: 'chrome',   use: { ...devices['Desktop Chrome'], channel: 'chrome' } },
+    { name: 'chrome',   use: { ...devices['Desktop Chrome'], channel: 'chrome' } },
     // { name: 'firefox',  use: { ...devices['Desktop Firefox'] } },
   ],
 });

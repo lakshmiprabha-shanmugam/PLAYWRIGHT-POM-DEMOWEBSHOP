@@ -30,7 +30,9 @@ jobs:
         run: npx playwright install --with-deps ${{ matrix.project }}
 
       - name: Run full regression
-        run: npx playwright test --project=${{ matrix.project }}
+        id: regression_tests
+        run: npm run test:allure -- --project=${{ matrix.project }}
+        continue-on-error: true
         env:
           BASE_URL           : ${{ secrets.BASE_URL }}
           TEST_USER_EMAIL    : ${{ secrets.TEST_USER_EMAIL }}
@@ -43,3 +45,49 @@ jobs:
           name: nightly-${{ matrix.project }}-${{ github.run_id }}
           path: playwright-report/
           retention-days: 60
+
+      - name: Upload nightly Allure report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nightly-allure-report-${{ matrix.project }}-${{ github.run_id }}
+          path: allure-report/
+          retention-days: 60
+
+      - name: Upload nightly Allure results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nightly-allure-results-${{ matrix.project }}-${{ github.run_id }}
+          path: allure-results/
+          retention-days: 60
+
+      - name: Upload nightly JUnit results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nightly-junit-results-${{ matrix.project }}-${{ github.run_id }}
+          path: results.xml
+          retention-days: 60
+
+      - name: Upload nightly test results on failure
+        uses: actions/upload-artifact@v4
+        if: steps.regression_tests.outcome == 'failure'
+        with:
+          name: nightly-test-results-${{ matrix.project }}-${{ github.run_id }}
+          path: test-results/
+          retention-days: 14
+
+      - name: Add report artifact links
+        if: always()
+        run: |
+          echo "## Nightly test reports - ${{ matrix.project }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- [Workflow artifacts](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Download artifact: nightly-${{ matrix.project }}-${{ github.run_id }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Download artifact: nightly-allure-report-${{ matrix.project }}-${{ github.run_id }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Download artifact: nightly-allure-results-${{ matrix.project }}-${{ github.run_id }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Download artifact: nightly-junit-results-${{ matrix.project }}-${{ github.run_id }}" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Fail job when tests fail
+        if: steps.regression_tests.outcome == 'failure'
+        run: exit 1

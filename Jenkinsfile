@@ -1,6 +1,10 @@
-// Jenkinsfile — Windows Jenkins
+// Jenkinsfile - Windows Jenkins
 pipeline {
   agent any
+
+  options {
+    skipDefaultCheckout(true)
+  }
 
   environment {
     BASE_URL = 'https://demowebshop.tricentis.com/'
@@ -21,16 +25,18 @@ pipeline {
   }
 
   stages {
-
     stage('Checkout') {
       steps {
+        cleanWs()
         checkout scm
         echo "Build: ${env.BUILD_NUMBER}"
       }
     }
 
     stage('Install Dependencies') {
-      steps { bat 'npm ci' }
+      steps {
+        bat 'npm ci'
+      }
     }
 
     stage('Install Playwright Browsers') {
@@ -59,21 +65,26 @@ pipeline {
               : params.TEST_SUITE == 'regression'
                 ? ''
                 : "tests/${params.TEST_SUITE}.spec.ts"
-            bat "npx playwright test ${browser} ${suite}"
+
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+              bat "npx playwright test ${browser} ${suite}"
+            }
           }
         }
-      }
-    }
-
-    stage('Generate Allure Report') {
-      steps {
-        bat 'npx allure generate allure-results --clean -o allure-report'
       }
     }
   }
 
   post {
     always {
+      script {
+        if (fileExists('allure-results')) {
+          bat 'npx allure generate allure-results --clean -o allure-report'
+        } else {
+          echo 'No allure-results directory found; skipping Allure HTML generation.'
+        }
+      }
+
       junit allowEmptyResults: true, testResults: 'results.xml'
 
       allure([
@@ -102,11 +113,23 @@ pipeline {
         reportName           : 'Allure Test Report'
       ])
 
-      archiveArtifacts artifacts: 'test-results/**/*', allowEmptyArchive: true
+      archiveArtifacts artifacts: 'playwright-report/**/*', allowEmptyArchive: true
+      archiveArtifacts artifacts: 'allure-report/**/*', allowEmptyArchive: true
       archiveArtifacts artifacts: 'allure-results/**/*', allowEmptyArchive: true
+      archiveArtifacts artifacts: 'test-results/**/*', allowEmptyArchive: true
+
+      echo "Playwright report: ${env.BUILD_URL}Playwright_20Test_20Report/"
+      echo "Allure report: ${env.BUILD_URL}Allure_20Test_20Report/"
+      echo "Archived artifacts: ${env.BUILD_URL}artifact/"
     }
-    success { echo 'All Playwright tests passed!' }
-    failure { echo 'Tests failed — check the Playwright and Allure reports.' }
-    cleanup { cleanWs() }
+    success {
+      echo 'All Playwright tests passed.'
+    }
+    failure {
+      echo 'Tests failed - check the Playwright and Allure reports.'
+    }
+    cleanup {
+      cleanWs()
+    }
   }
 }
