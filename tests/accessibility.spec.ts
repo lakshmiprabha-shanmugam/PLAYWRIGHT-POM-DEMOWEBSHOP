@@ -72,7 +72,7 @@ async function login(page: Page): Promise<void> {
 }
 
 test.describe('Accessibility Tests', () => {
-  test.describe.configure({ mode: 'serial', timeout: 120000 });
+  test.describe.configure({ timeout: 120000 });
 
   test.beforeAll(async ({ browser }) => {
     const context = await browser.newContext();
