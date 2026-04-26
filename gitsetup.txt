@@ -40,7 +40,8 @@ STEP 6 — Add your new GitHub repo as the remote origin
 ----------------------------------------------------------------------
 STEP 7 — Push to GitHub
 ----------------------------------------------------------------------
-  git push -u origin main
+  git push -u origin main 
+  git push -u origin main --force
 
   NOTE: If GitHub asks for authentication, use your GitHub username
   and a Personal Access Token (not your password).
@@ -53,3 +54,62 @@ VERIFY
   After pushing, open your browser and go to:
   https://github.com/lakshmiprabha-shanmugam/PLAYWRIGHT-POM-DEMOWEBSHOP
   You should see all your project files on the main branch.
+
+======================================================================
+STEP 8 — Push the Nightly Regression Workflow to GitHub
+======================================================================
+
+----------------------------------------------------------------------
+8a — Stage the workflow file
+----------------------------------------------------------------------
+  git add .github/workflows/playwright-nightly.yml
+
+----------------------------------------------------------------------
+8b — Commit the workflow file
+----------------------------------------------------------------------
+  git commit -m "Add nightly regression workflow"
+
+----------------------------------------------------------------------
+8c — Push to GitHub
+----------------------------------------------------------------------
+  git push origin main
+
+----------------------------------------------------------------------
+8d — Add GitHub Secrets (required for the workflow to run)
+----------------------------------------------------------------------
+  Go to your repo on GitHub:
+  Settings → Secrets and variables → Actions → New repository secret
+
+  Add these 3 secrets:
+
+  Name                  Value
+  ──────────────────────────────────────────────────────
+  BASE_URL              https://demowebshop.tricentis.com
+  TEST_USER_EMAIL       lakshmishanmug2026@gmail.com
+  TEST_USER_PASSWORD    your test account password
+
+----------------------------------------------------------------------
+8e — Trigger the workflow manually (optional)
+----------------------------------------------------------------------
+  Go to your repo on GitHub:
+  Actions → Playwright Nightly Regression → Run workflow → Run workflow
+
+  The workflow also runs automatically every night at midnight UTC.
+
+Every time you change any file, run these 3 commands:
+git add .
+git commit -m "Updated playwright.config.ts for CI optimisation"
+git push origin main
+
+If you changed only one specific file:
+git add playwright.config.ts
+git commit -m "Updated playwright config"
+git push origin main
+
+Quick reference:
+
+Command	                  What it does
+git add .	               Stages all changed files
+git add filename	         Stages one specific file
+git commit -m "message"  	Saves the changes with a description
+git push origin main	      Uploads to GitHub
