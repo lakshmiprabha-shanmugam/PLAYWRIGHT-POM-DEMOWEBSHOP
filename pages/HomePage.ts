@@ -22,7 +22,7 @@ export class HomePage {
 
   constructor(page: Page) {
     this.page = page;
-    this.banner = page.locator('.home-page-top-banner, .nivo-wrapper');
+    this.banner = page.locator('.slider-wrapper');
     this.topNavMenu = page.locator('.top-menu');
     this.topNavLinks = page.locator('.top-menu > li > a');
     this.searchBox = page.locator('#small-searchterms');

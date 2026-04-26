@@ -16,7 +16,7 @@ export class SearchPage {
   constructor(page: Page) {
     this.page = page;
     this.searchInput = page.locator('#small-searchterms');
-    this.searchButton = page.locator('#small-search-button');
+    this.searchButton = page.locator('.search-box-button');
     this.searchResults = page.locator('.product-grid .product-item');
     this.noResultsMessage = page.locator('.no-result');
     this.sortDropdown = page.locator('#products-orderby');

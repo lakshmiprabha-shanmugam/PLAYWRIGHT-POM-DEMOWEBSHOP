@@ -45,6 +45,7 @@ async function loginAndGoToCheckout(page: Page, email: string, password: string)
   await page.locator('input[value="Add to cart"]').click();
 
   await page.goto(url('/cart'));
+  await page.waitForLoadState('domcontentloaded');
   const termsCheckbox = page.locator('#termsofservice');
   if (await termsCheckbox.isVisible()) {
     await termsCheckbox.check();

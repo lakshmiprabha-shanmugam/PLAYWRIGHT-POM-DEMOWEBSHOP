@@ -23,15 +23,29 @@ test.beforeAll(async ({ browser }) => {
   await context.close();
 });
 
-// Logs in and adds a product to the wishlist via search
+// Logs in and adds a product to the wishlist via AjaxCart
+// (DemoWebShop does not render an "Add to wishlist" button in the product page DOM;
+// the site exposes the same NopCommerce AJAX endpoint used by the hidden button)
 async function loginAndAddToWishlist(page: Page, email: string, password: string, searchTerm: string) {
   const loginPage = new LoginPage(page);
   await loginPage.navigate();
   await loginPage.login({ email, password });
 
   await page.goto(url(`/search?q=${encodeURIComponent(searchTerm)}`));
-  await page.locator('.product-title a').first().click();
-  await page.locator('input[value="Add to wishlist"]').click();
+  const productHref = await page.locator('.product-title a').first().getAttribute('href');
+  await page.goto(productHref!);
+  await page.waitForLoadState('domcontentloaded');
+
+  // Derive product ID from the Add-to-cart button id ("add-to-cart-button-{id}")
+  const productId = await page.evaluate(() => {
+    const btn = document.querySelector('[id^="add-to-cart-button-"]');
+    return btn?.id.replace('add-to-cart-button-', '') ?? null;
+  });
+
+  // Cart type 2 = Wishlist; this is the same endpoint the (hidden) wishlist button calls
+  await page.evaluate((pid) => {
+    (window as any).AjaxCart.addproducttocart_details(`/addproducttocart/details/${pid}/2`);
+  }, productId);
 }
 
 test.describe('4.6 Wishlist', () => {
