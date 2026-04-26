@@ -32,12 +32,12 @@ STEP 2 — Configure NodeJS Tool
 
   Field              Value
   ──────────────────────────────────────
-  Name               NodeJS-18
+  Name               NodeJS
   Version            NodeJS 18.x (LTS)
   Install from       nodejs.org
 
-  IMPORTANT: The name must be exactly "NodeJS-18" — this matches
-  the tools { nodejs 'NodeJS-18' } block in the Jenkinsfile.
+  IMPORTANT: The name must be exactly "NodeJS" — this matches
+  the tools { nodejs 'NodeJS' } block in the Jenkinsfile.
 
 ======================================================================
 STEP 3 — Add Jenkins Credentials
