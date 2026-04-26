@@ -43,9 +43,14 @@ async function loginAndAddToWishlist(page: Page, email: string, password: string
   });
 
   // Cart type 2 = Wishlist; this is the same endpoint the (hidden) wishlist button calls
+  // Set up the response listener BEFORE triggering the AJAX call to avoid race condition
+  const wishlistResponse = page.waitForResponse(
+    resp => resp.url().includes('/addproducttocart/details/') && resp.status() === 200
+  );
   await page.evaluate((pid) => {
     (window as any).AjaxCart.addproducttocart_details(`/addproducttocart/details/${pid}/2`);
   }, productId);
+  await wishlistResponse;
 }
 
 test.describe('4.6 Wishlist', () => {

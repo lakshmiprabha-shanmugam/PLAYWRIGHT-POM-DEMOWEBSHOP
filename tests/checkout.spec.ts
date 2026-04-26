@@ -42,7 +42,11 @@ async function loginAndGoToCheckout(page: Page, email: string, password: string)
 
   await page.goto(url('/search?q=Blue+Jeans'));
   await page.locator('.product-title a').first().click();
+  const addToCartResponse = page.waitForResponse(
+    resp => resp.url().includes('/addproducttocart/') && resp.status() === 200
+  );
   await page.locator('input[value="Add to cart"]').click();
+  await addToCartResponse;
 
   await page.goto(url('/cart'));
   await page.waitForLoadState('domcontentloaded');
