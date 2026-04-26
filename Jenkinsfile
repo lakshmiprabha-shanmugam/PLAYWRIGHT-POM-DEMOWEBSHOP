@@ -1,12 +1,10 @@
-// Jenkinsfile — Windows Jenkins, no tools block needed (Node.js on system PATH)
+// Jenkinsfile — Windows Jenkins
 pipeline {
   agent any
 
   environment {
-    BASE_URL           = 'https://demowebshop.tricentis.com/'
-    TEST_USER_EMAIL    = credentials('test-user-email')
-    TEST_USER_PASSWORD = credentials('test-user-password')
-    CI                 = 'true'
+    BASE_URL = 'https://demowebshop.tricentis.com/'
+    CI       = 'true'
   }
 
   parameters {
@@ -51,16 +49,21 @@ pipeline {
 
     stage('Run Playwright Tests') {
       steps {
-        script {
-          def browser = params.BROWSER == 'all'
-            ? ''
-            : "--project=${params.BROWSER}"
-          def suite = params.TEST_SUITE == 'smoke'
-            ? '--grep @smoke'
-            : params.TEST_SUITE == 'regression'
+        withCredentials([
+          string(credentialsId: 'test-user-email',    variable: 'TEST_USER_EMAIL'),
+          string(credentialsId: 'test-user-password', variable: 'TEST_USER_PASSWORD')
+        ]) {
+          script {
+            def browser = params.BROWSER == 'all'
               ? ''
-              : "tests/${params.TEST_SUITE}.spec.ts"
-          bat "npx playwright test ${browser} ${suite}"
+              : "--project=${params.BROWSER}"
+            def suite = params.TEST_SUITE == 'smoke'
+              ? '--grep @smoke'
+              : params.TEST_SUITE == 'regression'
+                ? ''
+                : "tests/${params.TEST_SUITE}.spec.ts"
+            bat "npx playwright test ${browser} ${suite}"
+          }
         }
       }
     }
@@ -74,7 +77,6 @@ pipeline {
 
   post {
     always {
-
       junit allowEmptyResults: true, testResults: 'results.xml'
 
       allure([
