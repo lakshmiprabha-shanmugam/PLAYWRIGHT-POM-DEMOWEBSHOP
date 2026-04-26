@@ -5,6 +5,9 @@ OVERVIEW:
   This guide covers everything needed to run the Playwright test suite
   in Jenkins using the Jenkinsfile in the repository root.
 
+  IMPORTANT: Jenkins is running on Windows. The Jenkinsfile uses
+  "bat" commands (not "sh") for all shell steps.
+
 ======================================================================
 STEP 1 — Install Required Jenkins Plugins
 ======================================================================
@@ -14,30 +17,31 @@ STEP 1 — Install Required Jenkins Plugins
 
   Plugin Name                   Purpose
   ──────────────────────────────────────────────────────────────────
-  NodeJS Plugin                 Run npm/npx commands in pipeline
   Allure Jenkins Plugin         Interactive Allure test report
   HTML Publisher Plugin         Publish Playwright HTML report
   JUnit Plugin                  Test trend charts from results.xml
   Pipeline Plugin               Declarative pipeline support
   Git Plugin                    Checkout code from GitHub
 
+  NOTE: NodeJS Plugin is NOT required. Node.js must be installed
+  on the Jenkins machine and available on the system PATH.
+  The Jenkinsfile does NOT use a tools { nodejs } block.
+
   Click "Install without restart" after selecting all plugins.
 
 ======================================================================
-STEP 2 — Configure NodeJS Tool
+STEP 2 — Verify Node.js is on the System PATH
 ======================================================================
-  Go to: Jenkins → Manage Jenkins → Global Tool Configuration → NodeJS
+  Node.js must be installed on the Windows machine running Jenkins.
 
-  Click "Add NodeJS" and set:
+  To verify, open a command prompt and run:
+    node --version
+    npm --version
 
-  Field              Value
-  ──────────────────────────────────────
-  Name               NodeJS
-  Version            NodeJS 18.x (LTS)
-  Install from       nodejs.org
+  Both commands must return version numbers. If not, download and
+  install Node.js 18 LTS from https://nodejs.org
 
-  IMPORTANT: The name must be exactly "NodeJS" — this matches
-  the tools { nodejs 'NodeJS' } block in the Jenkinsfile.
+  After installing, restart Jenkins so it picks up the updated PATH.
 
 ======================================================================
 STEP 3 — Add Jenkins Credentials
@@ -45,24 +49,49 @@ STEP 3 — Add Jenkins Credentials
   Go to: Jenkins → Manage Jenkins → Credentials →
          System → Global credentials → Add Credentials
 
-  Add the following two credentials:
+  You need 4 credentials in total:
 
-  Credential 1:
-  ─────────────
+  ──────────────────────────────────────────────────────────────────
+  Credential 1 — GitHub connection (may already exist)
+  ──────────────────────────────────────────────────────────────────
+  Kind        : Secret text  (or Username with password)
+  ID          : github_connect
+  Description : github_connect
+
+  ──────────────────────────────────────────────────────────────────
+  Credential 2 — GitHub PAT for pipeline checkout
+  ──────────────────────────────────────────────────────────────────
+  Kind        : Username with password
+  Username    : lakshmiprabha-shanmugam
+  Password    : (your GitHub Personal Access Token)
+  ID          : github-pat
+  Description : GitHub PAT for PLAYWRIGHT-POM-DEMOWEBSHOP
+
+  ──────────────────────────────────────────────────────────────────
+  Credential 3 — Test user email
+  ──────────────────────────────────────────────────────────────────
   Kind        : Secret text
   Secret      : lakshmishanmug2026@gmail.com
   ID          : test-user-email
   Description : DemoWebShop test user email
 
-  Credential 2:
-  ─────────────
+  ──────────────────────────────────────────────────────────────────
+  Credential 4 — Test user password
+  ──────────────────────────────────────────────────────────────────
   Kind        : Secret text
   Secret      : Tosca1234!
   ID          : test-user-password
   Description : DemoWebShop test user password
 
-  IMPORTANT: The IDs must match exactly — the Jenkinsfile references
-  credentials('test-user-email') and credentials('test-user-password').
+  IMPORTANT: All 4 credentials must be present. The IDs must match
+  exactly (case-sensitive, hyphens). Credentials 3 and 4 are used
+  inside the "Run Playwright Tests" stage via withCredentials block.
+
+  After adding all 4, your Global credentials list should show:
+    github_connect
+    github-pat
+    test-user-email
+    test-user-password
 
 ======================================================================
 STEP 4 — Create the Jenkins Pipeline Job
@@ -78,6 +107,7 @@ STEP 4 — Create the Jenkins Pipeline Job
   Definition   : Pipeline script from SCM
   SCM          : Git
   Repository   : https://github.com/lakshmiprabha-shanmugam/PLAYWRIGHT-POM-DEMOWEBSHOP.git
+  Credentials  : github-pat
   Branch       : */main
   Script Path  : Jenkinsfile
   ─────────────────────────────────────────────────────────────────
@@ -99,9 +129,11 @@ STEP 5 — Configure Allure Plugin
 ======================================================================
 STEP 6 — Run the Pipeline
 ======================================================================
-  Go to: Jenkins → PLAYWRIGHT-POM-DEMOWEBSHOP → Build with Parameters
+  Go to: Jenkins → PLAYWRIGHT-POM-DEMOWEBSHOP → Build Now
 
-  Select your options:
+  NOTE: The first build shows "Build Now". After Jenkins detects
+  the parameters in the Jenkinsfile, subsequent builds show
+  "Build with Parameters" — giving you these dropdowns:
 
   Parameter      Options
   ──────────────────────────────────────────────────────────────────
@@ -132,19 +164,24 @@ PIPELINE STAGES OVERVIEW
   Checkout                   Pulls latest code from GitHub
   Install Dependencies       Runs npm ci
   Install Playwright         Installs selected browser binaries
-  Run Playwright Tests       Executes tests with selected browser/suite
+  Run Playwright Tests       Executes tests (credentials injected here)
   Generate Allure Report     Builds interactive Allure HTML report
 
 ======================================================================
 ENVIRONMENT VARIABLES USED IN JENKINSFILE
 ======================================================================
 
-  Variable              Source               Value
+  Variable              Source                  Value
   ──────────────────────────────────────────────────────────────────
-  BASE_URL              Hardcoded            https://demowebshop.tricentis.com/
-  TEST_USER_EMAIL       Jenkins Credentials  test-user-email
-  TEST_USER_PASSWORD    Jenkins Credentials  test-user-password
-  CI                    Hardcoded            true
+  BASE_URL              Hardcoded               https://demowebshop.tricentis.com/
+  CI                    Hardcoded               true
+  TEST_USER_EMAIL       withCredentials block   test-user-email
+  TEST_USER_PASSWORD    withCredentials block   test-user-password
+
+  NOTE: TEST_USER_EMAIL and TEST_USER_PASSWORD are injected only
+  inside the "Run Playwright Tests" stage using withCredentials,
+  NOT in the top-level environment block. This prevents the entire
+  pipeline from aborting if credentials are missing.
 
 ======================================================================
 TEST SUITE GREP TAGS (used with @smoke)
@@ -233,6 +270,67 @@ TROUBLESHOOTING — GitHub Authentication Error in Jenkins
   Branch          */main
   Script Path     Jenkinsfile
 
-  Click Save → Build with Parameters.
+  Click Save → Build Now.
 
   The authentication error will be gone once github-pat is selected.
+
+======================================================================
+TROUBLESHOOTING — NodeJS tool not configured error
+======================================================================
+
+  ERROR:
+  "Tool type 'nodejs' does not have an install of 'NodeJS-18'
+   configured — did you mean 'NodeJS'?"
+
+  CAUSE:
+  The Jenkinsfile had a tools { nodejs } block referencing a name
+  that did not match the Jenkins Global Tool Configuration.
+
+  FIX:
+  The tools block has been removed from the Jenkinsfile entirely.
+  Node.js must be installed directly on the Jenkins machine and
+  available on the system PATH. No Jenkins NodeJS tool config needed.
+
+======================================================================
+TROUBLESHOOTING — Pipeline aborts with ERROR: test-user-password
+======================================================================
+
+  ERROR:
+  "ERROR: test-user-password
+   Finished: FAILURE"
+  (All pipeline stages are skipped, only post actions run)
+
+  CAUSE:
+  The credentials() binding in the environment block fails if the
+  credential ID does not exist in Jenkins. This aborts the entire
+  pipeline before any stage runs.
+
+  FIX:
+  Credentials are now bound using withCredentials inside the
+  "Run Playwright Tests" stage only — not in the top-level
+  environment block. This means:
+  - Other stages (checkout, install, etc.) run normally
+  - Only the test stage fails if credentials are missing
+  - Error message clearly points to the missing credential
+
+  Make sure credentials test-user-email and test-user-password
+  both exist in Jenkins Global credentials with Kind: Secret text.
+
+======================================================================
+TROUBLESHOOTING — MissingContextVariableException (junit / cleanWs)
+======================================================================
+
+  ERROR:
+  "Required context class hudson.FilePath is missing.
+   Perhaps you forgot to surround the junit step with a node step."
+
+  CAUSE:
+  The pipeline exits the node context early (because a prior step
+  failed), then the post block tries to run junit/cleanWs outside
+  of any node context.
+
+  FIX:
+  Resolved by fixing the root cause (credentials not found) so the
+  pipeline runs fully inside its node context. The post block steps
+  also use allowEmptyResults: true and allowMissing: true so they
+  do not fail when report files don't exist yet.
