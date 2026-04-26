@@ -10,7 +10,7 @@ pipeline {
   parameters {
     choice(
       name        : 'BROWSER',
-      choices     : ['chromium', 'chrome', 'firefox', 'all'],
+      choices     : ['chromium', 'chrome', 'both'],
       description : 'Browser to run tests on'
     )
     choice(
@@ -37,11 +37,8 @@ pipeline {
       steps {
         bat 'npx playwright install --with-deps chromium'
         script {
-          if (params.BROWSER == 'chrome' || params.BROWSER == 'all') {
+          if (params.BROWSER == 'chrome' || params.BROWSER == 'both') {
             bat 'npx playwright install --with-deps chrome'
-          }
-          if (params.BROWSER == 'firefox' || params.BROWSER == 'all') {
-            bat 'npx playwright install --with-deps firefox'
           }
         }
       }
@@ -54,8 +51,8 @@ pipeline {
           string(credentialsId: 'test-user-password', variable: 'TEST_USER_PASSWORD')
         ]) {
           script {
-            def browser = params.BROWSER == 'all'
-              ? ''
+            def browser = params.BROWSER == 'both'
+              ? '--project=chromium --project=chrome'
               : "--project=${params.BROWSER}"
             def suite = params.TEST_SUITE == 'smoke'
               ? '--grep @smoke'
