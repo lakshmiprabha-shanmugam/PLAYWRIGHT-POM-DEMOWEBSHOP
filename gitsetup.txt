@@ -1,0 +1,55 @@
+Steps to push PLAYWRIGHT-POM-DEMOWEBSHOP to GitHub (Clean Fresh Setup)
+======================================================================
+
+WHY THE CONFUSION:
+  The old git repo (.git folder) exists at C:\Users\laksh — it was tracking
+  your entire user folder. That is why old branch names like "Katalon-scritps"
+  appeared. We fix this by creating a brand new isolated git repo just for
+  this project folder.
+
+----------------------------------------------------------------------
+STEP 1 — Open terminal and navigate to the project folder
+----------------------------------------------------------------------
+  cd "c:\Users\laksh\OneDrive\Desktop\Playwrite\POM Folder\PLAYWRIGHT-POM-DEMOWEBSHOP"
+
+----------------------------------------------------------------------
+STEP 2 — Initialize a brand new git repo inside this folder only
+----------------------------------------------------------------------
+  git init
+
+----------------------------------------------------------------------
+STEP 3 — Stage all project files
+----------------------------------------------------------------------
+  git add .
+
+----------------------------------------------------------------------
+STEP 4 — Create the first commit
+----------------------------------------------------------------------
+  git commit -m "Initial commit: Playwright POM DemoWebShop test suite"
+
+----------------------------------------------------------------------
+STEP 5 — Rename the branch to main
+----------------------------------------------------------------------
+  git branch -M main
+
+----------------------------------------------------------------------
+STEP 6 — Add your new GitHub repo as the remote origin
+----------------------------------------------------------------------
+  git remote add origin https://github.com/lakshmiprabha-shanmugam/PLAYWRIGHT-POM-DEMOWEBSHOP.git
+
+----------------------------------------------------------------------
+STEP 7 — Push to GitHub
+----------------------------------------------------------------------
+  git push -u origin main
+
+  NOTE: If GitHub asks for authentication, use your GitHub username
+  and a Personal Access Token (not your password).
+  Generate token at: GitHub → Settings → Developer Settings →
+  Personal Access Tokens → Tokens (classic) → Generate new token
+
+----------------------------------------------------------------------
+VERIFY
+----------------------------------------------------------------------
+  After pushing, open your browser and go to:
+  https://github.com/lakshmiprabha-shanmugam/PLAYWRIGHT-POM-DEMOWEBSHOP
+  You should see all your project files on the main branch.

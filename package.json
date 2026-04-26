@@ -1,0 +1,28 @@
+{
+  "name": "playwright-pom-demowebshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:login": "playwright test tests/login.spec.ts",
+    "test:register": "playwright test tests/register.spec.ts",
+    "allure:generate": "allure generate allure-results --clean -o allure-report",
+    "allure:open": "allure open allure-report",
+    "allure:serve": "allure serve allure-results"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0",
+    "allure-commandline": "^2.38.1",
+    "allure-playwright": "^3.7.1"
+  },
+  "dependencies": {
+    "csv-parse": "^6.2.1",
+    "xlsx": "^0.18.5"
+  }
+}

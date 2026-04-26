@@ -1,0 +1,80 @@
+[
+  {
+    "scenario": "Valid registration - Female gender",
+    "gender": "Female",
+    "firstName": "Lakshmi",
+    "lastName": "Prabha",
+    "email": "lakshmi.reg",
+    "password": "Test1234!",
+    "expectedResult": "success"
+  },
+  {
+    "scenario": "Valid registration - Male gender",
+    "gender": "Male",
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.reg",
+    "password": "Test1234!",
+    "expectedResult": "success"
+  },
+  {
+    "scenario": "Registration fails - empty first name",
+    "gender": "Female",
+    "firstName": "",
+    "lastName": "Doe",
+    "email": "test.invalid@example.com",
+    "password": "Test1234!",
+    "expectedResult": "failure",
+    "expectedError": "First name is required."
+  },
+  {
+    "scenario": "Registration fails - empty last name",
+    "gender": "Male",
+    "firstName": "John",
+    "lastName": "",
+    "email": "test.invalid@example.com",
+    "password": "Test1234!",
+    "expectedResult": "failure",
+    "expectedError": "Last name is required."
+  },
+  {
+    "scenario": "Registration fails - empty email",
+    "gender": "Female",
+    "firstName": "Jane",
+    "lastName": "Smith",
+    "email": "",
+    "password": "Test1234!",
+    "expectedResult": "failure",
+    "expectedError": "Email is required."
+  },
+  {
+    "scenario": "Registration fails - invalid email format",
+    "gender": "Male",
+    "firstName": "Bob",
+    "lastName": "Brown",
+    "email": "notanemail",
+    "password": "Test1234!",
+    "expectedResult": "failure",
+    "expectedError": "Wrong email"
+  },
+  {
+    "scenario": "Registration fails - password too short",
+    "gender": "Female",
+    "firstName": "Alice",
+    "lastName": "Green",
+    "email": "alice.short@example.com",
+    "password": "abc",
+    "expectedResult": "failure",
+    "expectedError": "least 6 characters"
+  },
+  {
+    "scenario": "Registration fails - empty password",
+    "gender": "Male",
+    "firstName": "Mike",
+    "lastName": "Wilson",
+    "email": "mike.test@example.com",
+    "password": "",
+    "expectedResult": "failure",
+    "expectedError": "Password is required."
+  }
+]

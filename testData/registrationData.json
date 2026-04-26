@@ -1,0 +1,66 @@
+[
+  {
+    "gender": "Male",
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe1@test.com",
+    "password": "Test@123",
+    "confirmPassword": "Test@123"
+  },
+  {
+    "gender": "Female",
+    "firstName": "Emma",
+    "lastName": "Smith",
+    "email": "emma.smith2@test.com",
+    "password": "Pass@456",
+    "confirmPassword": "Pass@456"
+  },
+  {
+    "gender": "Male",
+    "firstName": "David",
+    "lastName": "Johnson",
+    "email": "david.johnson3@test.com",
+    "password": "Demo@789",
+    "confirmPassword": "Demo@789"
+  },
+  {
+    "gender": "Female",
+    "firstName": "Olivia",
+    "lastName": "Brown",
+    "email": "olivia.brown4@test.com",
+    "password": "Qwerty@123",
+    "confirmPassword": "Qwerty@123"
+  },
+  {
+    "gender": "Male",
+    "firstName": "Michael",
+    "lastName": "Lee",
+    "email": "michael.lee5@test.com",
+    "password": "MyPass@1",
+    "confirmPassword": "MyPass@1"
+  },
+  {
+    "gender": "Female",
+    "firstName": "Sophia",
+    "lastName": "Wilson",
+    "email": "sophia.wilson6@test.com",
+    "password": "Secure@22",
+    "confirmPassword": "Secure@22"
+  },
+  {
+    "gender": "Male",
+    "firstName": "Daniel",
+    "lastName": "Taylor",
+    "email": "daniel.taylor7@test.com",
+    "password": "Alpha@99",
+    "confirmPassword": "Alpha@99"
+  },
+  {
+    "gender": "Female",
+    "firstName": "Ava",
+    "lastName": "Anderson",
+    "email": "ava.anderson8@test.com",
+    "password": "Beta@88",
+    "confirmPassword": "Beta@88"
+  }
+]

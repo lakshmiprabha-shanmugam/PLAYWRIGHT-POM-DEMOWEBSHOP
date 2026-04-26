@@ -1,0 +1,10 @@
+# .gitignore
+node_modules/
+test-results/
+playwright-report/
+.playwright/
+*.png
+*.zip
+dist/
+.env
+.env.local

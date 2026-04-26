@@ -1,0 +1,5 @@
+gender,firstName,lastName,email,password,confirmPassword
+Male,John,Doe,john.doe@test.com,Test@123,Test@123
+Female,Emma,Smith,emma.smith@test.com,Pass@456,Pass@456
+Male,David,Johnson,david.johnson@test.com,Demo@789,Demo@789
+Female,Olivia,Brown,olivia.brown@test.com,Qwerty@123,Qwerty@123

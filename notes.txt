@@ -1,0 +1,62 @@
+1) User Stroy creation 
+ 
+ Req: As a user I should able to login in Demo Web Shop application so that user can access the features from the application
+ Prompt:
+ Create user stoties for the following requirement.
+ Requrirement: "As a user I should able to login Demo Web Shoh application so that user can access all the feautres from the application
+
+ 2) Test case development:
+Prompt: create test case for the following user story
+
+User Story 1: Login with valid credentials
+As a registered user, I want to log in using a valid email address and password so that I can access my account.
+
+Acceptance Criteria:
+
+User should be able to enter a valid email address.
+User should be able to enter a valid password.
+User should be able to click the Log in button.
+User should be redirected to the home page or account page after successful login.
+
+
+5) Test Automation script writing.
+
+Prompt: Write an automation test script using Playwright with TypeScript (Page Object Model) for a successful user registration scenario on https://demowebshop.tricentis.com/
+Precondition: User is on the registration page of the Demo Web Shop application
+Test Steps: 
+Launch browser and open the URL,
+navigate to the Register page, 
+enter valid data in all mandatory fields (First Name, Last Name, Email, Password, Confirm Password), 
+select required options (Gender), and click the Register button
+Expected Result: User is successfully registered and redirected to the registration success page or account dashboard
+Additional Requirements: Implement using Page Object Model (POM) in TypeScript, create a Pages folder for page classes, create test scripts under a tests folder, and use Playwright locators (page.locator) instead of XPath where possible
+
+6) Test automation script writing for dashboard page for the block-category-navigation 
+
+Test Case: Validate total count on left Categorires navigation panel, make sure the links are working and displaying as per the title
+PreCondition: The user is on the Dashboard page, create using page object model, create folder under Pages, and test under tests folder
+
+1)Launch chrome browser and open URL "https://demowebshop.tricentis.com/books"
+2) login using username "mylogin@gmail.com", password "mytest1"
+3) Make sure the Categories could on the left naviagation is matching with the header-menu
+4)Click on each Categories link and make sure the page displayed as per the selected Categories
+5)Logout from the Page
+
+7) utitlity creation
+
+8)test data generation
+
+Prompt 1: "create test data for registration form in tabular format. Data includes gender, first name, lastname,email, password and confirm password"
+
+Prompt 2: "create test data for registration form in JSON format. Data includes gender, first name, lastname,email, password and confirm password"
+
+9)Data driven testing
+
+prompt 1: use the test data file called registrationData.json, and create the new spec file test case under tests.
+prompt 2: use the test data file called registrationData.csv, and create the new spec file test case under tests.
+test steps: 
+1)install csv-parse
+2)create test under tests folder
+
+10) code review and understanding:
+prompt : explain the below code

@@ -1,0 +1,9 @@
+scenario,gender,firstName,lastName,email,password,expectedResult,expectedError
+"Valid registration - Female gender",Female,Lakshmi,Prabha,lakshmi.csv,Test1234!,success,
+"Valid registration - Male gender",Male,John,Doe,john.csv,Test1234!,success,
+"Registration fails - empty first name",Female,,Doe,test.invalid@example.com,Test1234!,failure,"First name is required."
+"Registration fails - empty last name",Male,John,,test.invalid@example.com,Test1234!,failure,"Last name is required."
+"Registration fails - empty email",Female,Jane,Smith,,Test1234!,failure,"Email is required."
+"Registration fails - invalid email format",Male,Bob,Brown,notanemail,Test1234!,failure,"Wrong email"
+"Registration fails - password too short",Female,Alice,Green,alice.short@example.com,abc,failure,"least 6 characters"
+"Registration fails - empty password",Male,Mike,Wilson,mike.test@example.com,,failure,"Password is required."
