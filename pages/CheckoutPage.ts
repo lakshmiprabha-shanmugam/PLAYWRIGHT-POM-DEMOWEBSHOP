@@ -19,6 +19,7 @@ export class CheckoutPage {
 
   // Shipping address step (to verify skipped)
   readonly shippingAddressStep: Locator;
+  readonly shippingAddressContinue: Locator;
 
   // Shipping method
   readonly shippingMethodContinue: Locator;
@@ -64,6 +65,9 @@ export class CheckoutPage {
     this.billingContinue = page.locator('#billing-buttons-container input[value="Continue"]');
 
     this.shippingAddressStep = page.locator('#checkout-step-shipping');
+    this.shippingAddressContinue = page.locator(
+      '#checkout-step-shipping input[value="Continue"]'
+    );
 
     this.shippingMethodContinue = page.locator(
       '#shipping-method-buttons-container input[value="Continue"]'
@@ -88,8 +92,8 @@ export class CheckoutPage {
     );
 
     this.thankYouMessage = page.locator('.title strong');
-    this.orderNumber = page.locator('.order-number strong');
-    this.orderSummarySection = page.locator('.order-details-area');
+    this.orderNumber = page.getByText(/Order number:\s*\d+/);
+    this.orderSummarySection = page.locator('.section.order-completed');
 
     this.validationErrors = page.locator('.field-validation-error');
   }
@@ -101,7 +105,7 @@ export class CheckoutPage {
   // If user has saved addresses, force 'New Address' so the form fields appear
   async selectNewBillingAddress() {
     if (await this.billingAddressSelect.isVisible()) {
-      await this.billingAddressSelect.selectOption('0');
+      await this.billingAddressSelect.selectOption({ label: 'New Address' });
       await this.billingFirstName.waitFor({ state: 'visible' });
     }
   }
@@ -127,22 +131,41 @@ export class CheckoutPage {
     await this.billingZip.fill(data.zip);
     await this.billingPhone.fill(data.phone);
 
-    if (data.shipToSameAddress !== false) {
-      await this.shipToSameAddressCheckbox.check();
-    } else {
-      await this.shipToSameAddressCheckbox.uncheck();
+    if (await this.shipToSameAddressCheckbox.isVisible({ timeout: 1000 })) {
+      if (data.shipToSameAddress !== false) {
+        await this.shipToSameAddressCheckbox.check();
+      } else {
+        await this.shipToSameAddressCheckbox.uncheck();
+      }
     }
 
     await this.billingContinue.click();
+    await this.page
+      .locator(
+        '#checkout-step-shipping input[value="Continue"], #shipping-method-buttons-container input[value="Continue"]'
+      )
+      .first()
+      .waitFor({ state: 'visible' });
   }
 
   async selectShippingMethod(methodLabel: string) {
+    await this.continueShippingAddressIfNeeded();
+    await this.shippingMethodContinue.waitFor({ state: 'visible' });
     await this.page.getByLabel(methodLabel, { exact: false }).check();
     await this.shippingMethodContinue.click();
   }
 
   async selectDefaultShippingMethod() {
+    await this.continueShippingAddressIfNeeded();
+    await this.shippingMethodContinue.waitFor({ state: 'visible' });
     await this.shippingMethodContinue.click();
+  }
+
+  async continueShippingAddressIfNeeded() {
+    if (await this.shippingAddressContinue.isVisible({ timeout: 5000 })) {
+      await this.shippingAddressContinue.click();
+      await this.shippingMethodContinue.waitFor({ state: 'visible' });
+    }
   }
 
   async selectPaymentMethod(methodLabel: string) {

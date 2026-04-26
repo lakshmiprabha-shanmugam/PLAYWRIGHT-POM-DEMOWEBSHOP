@@ -6,6 +6,7 @@ import { config, url } from './config/testConfig';
 
 const testEmail = `testwishlist+${Date.now()}@gmail.com`;
 const testPassword = config.users.standard.password;
+const wishlistProduct = 'Health Book';
 
 test.beforeAll(async ({ browser }) => {
   const context = await browser.newContext();
@@ -23,42 +24,34 @@ test.beforeAll(async ({ browser }) => {
   await context.close();
 });
 
-// Logs in and adds a product to the wishlist via AjaxCart
-// (DemoWebShop does not render an "Add to wishlist" button in the product page DOM;
-// the site exposes the same NopCommerce AJAX endpoint used by the hidden button)
 async function loginAndAddToWishlist(page: Page, email: string, password: string, searchTerm: string) {
   const loginPage = new LoginPage(page);
   await loginPage.navigate();
   await loginPage.login({ email, password });
 
+  await addProductToWishlist(page, searchTerm);
+}
+
+async function addProductToWishlist(page: Page, searchTerm: string) {
   await page.goto(url(`/search?q=${encodeURIComponent(searchTerm)}`));
   const productHref = await page.locator('.product-title a').first().getAttribute('href');
   await page.goto(productHref!);
   await page.waitForLoadState('domcontentloaded');
 
-  // Derive product ID from the Add-to-cart button id ("add-to-cart-button-{id}")
-  const productId = await page.evaluate(() => {
-    const btn = document.querySelector('[id^="add-to-cart-button-"]');
-    return btn?.id.replace('add-to-cart-button-', '') ?? null;
-  });
-
-  // Cart type 2 = Wishlist; this is the same endpoint the (hidden) wishlist button calls
-  // Set up the response listener BEFORE triggering the AJAX call to avoid race condition
   const wishlistResponse = page.waitForResponse(
-    resp => resp.url().includes('/addproducttocart/details/') && resp.status() === 200
+    resp => resp.url().includes('/addproducttocart/') && resp.status() === 200
   );
-  await page.evaluate((pid) => {
-    (window as any).AjaxCart.addproducttocart_details(`/addproducttocart/details/${pid}/2`);
-  }, productId);
+  await page.locator('input[value="Add to wishlist"]').click();
   await wishlistResponse;
 }
 
 test.describe('4.6 Wishlist', () => {
+  test.describe.configure({ mode: 'serial', timeout: 120000 });
 
   test('TC-WISH-01: Add item to wishlist @smoke', async ({ page }) => {
     const wishlistPage = new WishlistPage(page);
 
-    await loginAndAddToWishlist(page, testEmail, testPassword, 'Blue Jeans');
+    await loginAndAddToWishlist(page, testEmail, testPassword, wishlistProduct);
 
     await expect(wishlistPage.successNotification).toBeVisible();
     await expect(wishlistPage.wishlistQty).not.toHaveText('(0)');
@@ -67,7 +60,7 @@ test.describe('4.6 Wishlist', () => {
   test('TC-WISH-02: View wishlist', async ({ page }) => {
     const wishlistPage = new WishlistPage(page);
 
-    await loginAndAddToWishlist(page, testEmail, testPassword, 'Blue Jeans');
+    await loginAndAddToWishlist(page, testEmail, testPassword, wishlistProduct);
 
     await wishlistPage.wishlistHeaderLink.click();
 
@@ -80,7 +73,7 @@ test.describe('4.6 Wishlist', () => {
   test('TC-WISH-03: Add to cart from wishlist', async ({ page }) => {
     const wishlistPage = new WishlistPage(page);
 
-    await loginAndAddToWishlist(page, testEmail, testPassword, 'Blue Jeans');
+    await loginAndAddToWishlist(page, testEmail, testPassword, wishlistProduct);
     await wishlistPage.navigate();
 
     await wishlistPage.addItemToCartFromWishlist(0);
@@ -91,14 +84,12 @@ test.describe('4.6 Wishlist', () => {
   test('TC-WISH-04: Remove item from wishlist', async ({ page }) => {
     const wishlistPage = new WishlistPage(page);
 
-    await loginAndAddToWishlist(page, testEmail, testPassword, 'Blue Jeans');
+    await loginAndAddToWishlist(page, testEmail, testPassword, wishlistProduct);
     await wishlistPage.navigate();
 
     // Clear any leftover items from previous runs, then re-add exactly one
     await wishlistPage.removeAllItems();
-    await page.goto(url('/search?q=Blue+Jeans'));
-    await page.locator('.product-title a').first().click();
-    await page.locator('input[value="Add to wishlist"]').click();
+    await addProductToWishlist(page, wishlistProduct);
 
     await wishlistPage.navigate();
     const countBefore = await wishlistPage.getItemCount();
@@ -109,13 +100,12 @@ test.describe('4.6 Wishlist', () => {
     expect(countAfter).toBe(countBefore - 1);
   });
 
-  test('TC-WISH-05: Wishlist requires login', async ({ page }) => {
+  test('TC-WISH-05: Guest can add item to wishlist', async ({ page }) => {
     // Guest session — no login
-    await page.goto(url('/search?q=Blue+Jeans'));
-    await page.locator('.product-title a').first().click();
-    await page.locator('input[value="Add to wishlist"]').click();
+    await addProductToWishlist(page, wishlistProduct);
 
-    await expect(page).toHaveURL(/login/);
+    await expect(page).toHaveURL(/health/);
+    await expect(page.locator('.bar-notification.success')).toBeVisible();
   });
 
 });

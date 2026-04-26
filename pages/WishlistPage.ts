@@ -18,15 +18,15 @@ export class WishlistPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.wishlistHeaderLink = page.locator('a.ico-wishlist');
+    this.wishlistHeaderLink = page.locator('a.ico-wishlist').first();
     this.wishlistQty = page.locator('.wishlist-qty');
-    this.wishlistItems = page.locator('.wishlist tbody tr');
-    this.productNames = page.locator('td.product .product-name a');
-    this.unitPrices = page.locator('td.unit-price .product-unit-price');
-    this.removeCheckboxes = page.locator('input[name="removefromcart"]');
-    this.addToCartCheckboxes = page.locator('input[name="addtocart"]');
-    this.updateWishlistButton = page.locator('input[name="updatewishlist"]');
-    this.addToCartButton = page.locator('input[value="Add to cart"]');
+    this.wishlistItems = page.locator('.wishlist-content table tbody tr');
+    this.productNames = page.locator('.wishlist-content table tbody tr td:nth-child(4) a');
+    this.unitPrices = page.locator('.wishlist-content table tbody tr td:nth-child(5)');
+    this.removeCheckboxes = page.locator('.wishlist-content input[name="removefromcart"]');
+    this.addToCartCheckboxes = page.locator('.wishlist-content input[name="addtocart"]');
+    this.updateWishlistButton = page.locator('.wishlist-content input[value="Update wishlist"]');
+    this.addToCartButton = page.locator('.wishlist-content input[value="Add to cart"]');
     this.successNotification = page.locator('.bar-notification.success');
     this.emptyWishlistMessage = page.locator('.no-data');
     this.cartQty = page.locator('.cart-qty');

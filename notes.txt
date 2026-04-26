@@ -60,3 +60,5 @@ test steps:
 
 10) code review and understanding:
 prompt : explain the below code
+
+11) prompt: run the full Playwright suite now, inspect any failures, patch the underlying issues, and rerun until the suite is clean or there’s a real external blocker.

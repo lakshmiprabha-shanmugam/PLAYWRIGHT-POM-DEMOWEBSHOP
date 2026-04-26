@@ -34,8 +34,8 @@ export class HomePage {
     this.cartLink = page.locator('#topcartlink');
     this.cartQty = page.locator('.cart-qty');
     this.addToCartButtons = page.locator('.home-page-product-grid input[value="Add to cart"]');
-    this.footerInfoSection = page.locator('.footer-block').filter({ hasText: 'Information' });
-    this.footerCustomerServiceSection = page.locator('.footer-block').filter({ hasText: 'Customer service' });
+    this.footerInfoSection = page.locator('.footer .column').filter({ hasText: 'Information' });
+    this.footerCustomerServiceSection = page.locator('.footer .column').filter({ hasText: 'Customer service' });
     this.footerNewsletterSection = page.locator('.newsletter-email');
     this.categoryPageTitle = page.locator('.page-title h1');
   }
@@ -54,6 +54,10 @@ export class HomePage {
   }
 
   async addFirstProductToCart() {
-    await this.addToCartButtons.first().click();
+    const addToCartResponse = this.page.waitForResponse(
+      response => response.url().includes('/addproducttocart/') && response.status() === 200
+    );
+    await this.addToCartButtons.nth(1).click();
+    await addToCartResponse;
   }
 }

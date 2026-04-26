@@ -1,0 +1,20 @@
+<testsuites id="" name="" tests="8" failures="0" skipped="0" errors="0" time="31.920671000000002">
+<testsuite name="cart.spec.ts" timestamp="2026-04-26T03:10:57.917Z" hostname="chromium" tests="8" failures="0" skipped="0" time="49.133" errors="0">
+<testcase name="4.5 Shopping Cart › TC-CART-01: Add single item to cart @smoke" classname="cart.spec.ts" time="8.882">
+</testcase>
+<testcase name="4.5 Shopping Cart › TC-CART-02: Add multiple different items" classname="cart.spec.ts" time="6.528">
+</testcase>
+<testcase name="4.5 Shopping Cart › TC-CART-03: Update item quantity in cart" classname="cart.spec.ts" time="5.561">
+</testcase>
+<testcase name="4.5 Shopping Cart › TC-CART-04: Remove item from cart" classname="cart.spec.ts" time="4.79">
+</testcase>
+<testcase name="4.5 Shopping Cart › TC-CART-05: Cart persists after page refresh" classname="cart.spec.ts" time="7.056">
+</testcase>
+<testcase name="4.5 Shopping Cart › TC-CART-06: Empty cart message" classname="cart.spec.ts" time="6.259">
+</testcase>
+<testcase name="4.5 Shopping Cart › TC-CART-07: Cart total calculation" classname="cart.spec.ts" time="4.918">
+</testcase>
+<testcase name="4.5 Shopping Cart › TC-CART-08: Continue shopping from cart" classname="cart.spec.ts" time="5.139">
+</testcase>
+</testsuite>
+</testsuites>

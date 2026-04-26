@@ -18,7 +18,7 @@ export class SearchPage {
     this.searchInput = page.locator('#small-searchterms');
     this.searchButton = page.locator('.search-box-button');
     this.searchResults = page.locator('.product-grid .product-item');
-    this.noResultsMessage = page.locator('.no-result');
+    this.noResultsMessage = page.getByText('No products were found that matched your criteria');
     this.sortDropdown = page.locator('#products-orderby');
     this.productPrices = page.locator('.actual-price');
     this.productNames = page.locator('.product-title a');
@@ -45,7 +45,13 @@ export class SearchPage {
   }
 
   async sortBy(optionLabel: string) {
+    const response = this.page.waitForResponse(resp =>
+      resp.url().includes('/search') && resp.status() === 200
+    );
     await this.sortDropdown.selectOption({ label: optionLabel });
+    await response;
+    await this.page.waitForLoadState('networkidle');
+    await this.searchResults.first().waitFor({ state: 'visible' });
   }
 
   async navigateToPage(pageNumber: number) {
