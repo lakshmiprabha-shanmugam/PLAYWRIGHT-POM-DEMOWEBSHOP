@@ -89,3 +89,86 @@ jobs:
       - name: Fail job when tests fail
         if: steps.smoke_tests.outcome == 'failure'
         run: exit 1
+
+  accessibility:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run accessibility tests
+        id: accessibility_tests
+        run: npm run test:a11y:allure
+        continue-on-error: true
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+          TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
+          TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
+
+      - name: Upload accessibility Playwright HTML report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: accessibility-playwright-report-${{ github.run_number }}
+          path: playwright-report/
+          retention-days: 30
+
+      - name: Upload accessibility Allure HTML report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: accessibility-allure-report-${{ github.run_number }}
+          path: allure-report/
+          retention-days: 30
+
+      - name: Upload accessibility Allure results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: accessibility-allure-results-${{ github.run_number }}
+          path: allure-results/
+          retention-days: 30
+
+      - name: Upload accessibility JUnit results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: accessibility-junit-results-${{ github.run_number }}
+          path: results.xml
+          retention-days: 30
+
+      - name: Upload accessibility test results on failure
+        uses: actions/upload-artifact@v4
+        if: steps.accessibility_tests.outcome == 'failure'
+        with:
+          name: accessibility-test-results-${{ github.run_number }}
+          path: test-results/
+          retention-days: 7
+
+      - name: Add accessibility report artifact links
+        if: always()
+        run: |
+          echo "## Accessibility test reports" >> "$GITHUB_STEP_SUMMARY"
+          echo "- [Workflow artifacts](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Download artifact: accessibility-playwright-report-${{ github.run_number }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Download artifact: accessibility-allure-report-${{ github.run_number }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Download artifact: accessibility-allure-results-${{ github.run_number }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Download artifact: accessibility-junit-results-${{ github.run_number }}" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Fail job when accessibility tests fail
+        if: steps.accessibility_tests.outcome == 'failure'
+        run: exit 1

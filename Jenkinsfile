@@ -19,7 +19,7 @@ pipeline {
     )
     choice(
       name        : 'TEST_SUITE',
-      choices     : ['smoke', 'regression', 'checkout', 'auth'],
+      choices     : ['smoke', 'regression', 'checkout', 'auth', 'accessibility'],
       description : 'Test suite to execute'
     )
   }
@@ -62,9 +62,11 @@ pipeline {
               : "--project=${params.BROWSER}"
             def suite = params.TEST_SUITE == 'smoke'
               ? '--grep @smoke'
-              : params.TEST_SUITE == 'regression'
-                ? ''
-                : "tests/${params.TEST_SUITE}.spec.ts"
+              : params.TEST_SUITE == 'accessibility'
+                ? '--grep @accessibility'
+                : params.TEST_SUITE == 'regression'
+                  ? ''
+                  : "tests/${params.TEST_SUITE}.spec.ts"
 
             catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
               bat "npx playwright test ${browser} ${suite}"
