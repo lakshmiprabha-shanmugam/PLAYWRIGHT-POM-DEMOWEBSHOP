@@ -1,0 +1,238 @@
+Jenkins Setup Guide — PLAYWRIGHT-POM-DEMOWEBSHOP
+======================================================================
+
+OVERVIEW:
+  This guide covers everything needed to run the Playwright test suite
+  in Jenkins using the Jenkinsfile in the repository root.
+
+======================================================================
+STEP 1 — Install Required Jenkins Plugins
+======================================================================
+  Go to: Jenkins → Manage Jenkins → Manage Plugins → Available
+
+  Install the following plugins:
+
+  Plugin Name                   Purpose
+  ──────────────────────────────────────────────────────────────────
+  NodeJS Plugin                 Run npm/npx commands in pipeline
+  Allure Jenkins Plugin         Interactive Allure test report
+  HTML Publisher Plugin         Publish Playwright HTML report
+  JUnit Plugin                  Test trend charts from results.xml
+  Pipeline Plugin               Declarative pipeline support
+  Git Plugin                    Checkout code from GitHub
+
+  Click "Install without restart" after selecting all plugins.
+
+======================================================================
+STEP 2 — Configure NodeJS Tool
+======================================================================
+  Go to: Jenkins → Manage Jenkins → Global Tool Configuration → NodeJS
+
+  Click "Add NodeJS" and set:
+
+  Field              Value
+  ──────────────────────────────────────
+  Name               NodeJS-18
+  Version            NodeJS 18.x (LTS)
+  Install from       nodejs.org
+
+  IMPORTANT: The name must be exactly "NodeJS-18" — this matches
+  the tools { nodejs 'NodeJS-18' } block in the Jenkinsfile.
+
+======================================================================
+STEP 3 — Add Jenkins Credentials
+======================================================================
+  Go to: Jenkins → Manage Jenkins → Credentials →
+         System → Global credentials → Add Credentials
+
+  Add the following two credentials:
+
+  Credential 1:
+  ─────────────
+  Kind        : Secret text
+  Secret      : lakshmishanmug2026@gmail.com
+  ID          : test-user-email
+  Description : DemoWebShop test user email
+
+  Credential 2:
+  ─────────────
+  Kind        : Secret text
+  Secret      : Tosca1234!
+  ID          : test-user-password
+  Description : DemoWebShop test user password
+
+  IMPORTANT: The IDs must match exactly — the Jenkinsfile references
+  credentials('test-user-email') and credentials('test-user-password').
+
+======================================================================
+STEP 4 — Create the Jenkins Pipeline Job
+======================================================================
+  Go to: Jenkins → New Item
+
+  1. Enter item name : PLAYWRIGHT-POM-DEMOWEBSHOP
+  2. Select          : Pipeline
+  3. Click           : OK
+
+  Under Pipeline section:
+  ─────────────────────────────────────────────────────────────────
+  Definition   : Pipeline script from SCM
+  SCM          : Git
+  Repository   : https://github.com/lakshmiprabha-shanmugam/PLAYWRIGHT-POM-DEMOWEBSHOP.git
+  Branch       : */main
+  Script Path  : Jenkinsfile
+  ─────────────────────────────────────────────────────────────────
+
+  Click Save.
+
+======================================================================
+STEP 5 — Configure Allure Plugin
+======================================================================
+  Go to: Jenkins → Manage Jenkins → Global Tool Configuration → Allure
+
+  Click "Add Allure Commandline" and set:
+
+  Field              Value
+  ──────────────────────────────────────
+  Name               allure
+  Install from       GitHub releases (latest)
+
+======================================================================
+STEP 6 — Run the Pipeline
+======================================================================
+  Go to: Jenkins → PLAYWRIGHT-POM-DEMOWEBSHOP → Build with Parameters
+
+  Select your options:
+
+  Parameter      Options
+  ──────────────────────────────────────────────────────────────────
+  BROWSER        chromium | chrome | firefox | all
+  TEST_SUITE     smoke | regression | checkout | auth
+
+  Click "Build" to trigger the pipeline.
+
+======================================================================
+STEP 7 — View Reports After Build
+======================================================================
+  After the build completes, reports are available on the build page:
+
+  Report                  Location
+  ──────────────────────────────────────────────────────────────────
+  Allure Report           Build page → Allure Report (interactive)
+  Playwright HTML Report  Build page → Playwright Test Report
+  JUnit Trend Chart       Job page → Test Result Trend graph
+  Screenshots & Traces    Build page → Build Artifacts → test-results/
+  Allure Results Archive  Build page → Build Artifacts → allure-results/
+
+======================================================================
+PIPELINE STAGES OVERVIEW
+======================================================================
+
+  Stage                      What it does
+  ──────────────────────────────────────────────────────────────────
+  Checkout                   Pulls latest code from GitHub
+  Install Dependencies       Runs npm ci
+  Install Playwright         Installs selected browser binaries
+  Run Playwright Tests       Executes tests with selected browser/suite
+  Generate Allure Report     Builds interactive Allure HTML report
+
+======================================================================
+ENVIRONMENT VARIABLES USED IN JENKINSFILE
+======================================================================
+
+  Variable              Source               Value
+  ──────────────────────────────────────────────────────────────────
+  BASE_URL              Hardcoded            https://demowebshop.tricentis.com/
+  TEST_USER_EMAIL       Jenkins Credentials  test-user-email
+  TEST_USER_PASSWORD    Jenkins Credentials  test-user-password
+  CI                    Hardcoded            true
+
+======================================================================
+TEST SUITE GREP TAGS (used with @smoke)
+======================================================================
+  Tests tagged with @smoke run when TEST_SUITE = smoke.
+
+  Currently tagged tests:
+  ─────────────────────────────────────────────────────────────────
+  TC-REG-01   Successful registration with valid data
+  TC-AUTH-01  Successful login with valid credentials
+  TC-AUTH-05  Successful logout
+  TC-HOME-01  Homepage loads correctly
+  TC-CART-01  Add single item to cart
+  TC-WISH-01  Add item to wishlist
+  TC-CHK-01   Complete checkout — Purchase Order
+  TC-SRCH-01  Search with valid keyword
+
+======================================================================
+PUSH LATEST CODE TO GITHUB (before running Jenkins)
+======================================================================
+  git add .
+  git commit -m "your change description"
+  git push origin main
+
+  Jenkins will pull the latest code automatically on each build.
+
+======================================================================
+TROUBLESHOOTING — GitHub Authentication Error in Jenkins
+======================================================================
+
+  ERROR:
+  "fatal: Cannot prompt because user interactivity has been disabled.
+   remote: Invalid username or token. Password authentication is not
+   supported for Git operations.
+   fatal: Authentication failed"
+
+  CAUSE:
+  Jenkins cannot use your GitHub password. GitHub requires a
+  Personal Access Token (PAT) for all Git operations.
+
+  FIX — 3 Steps:
+
+  ──────────────────────────────────────────────────────────────────
+  Fix Step 1 — Create a GitHub Personal Access Token (PAT)
+  ──────────────────────────────────────────────────────────────────
+  1. Go to GitHub → Settings (top right profile icon)
+  2. Scroll down → Developer settings
+  3. Personal access tokens → Tokens (classic)
+  4. Click Generate new token (classic)
+  5. Fill in:
+       Note       : Jenkins-PLAYWRIGHT-POM
+       Expiration : 90 days (or No expiration)
+       Scopes     : tick "repo" (full control)
+  6. Click Generate token
+  7. COPY THE TOKEN IMMEDIATELY — you will not see it again
+
+  ──────────────────────────────────────────────────────────────────
+  Fix Step 2 — Add the Token as a Jenkins Credential
+  ──────────────────────────────────────────────────────────────────
+  Go to:
+  Jenkins → Manage Jenkins → Credentials →
+  System → Global credentials → Add Credentials
+
+  Field          Value
+  ──────────────────────────────────────────────────────────────────
+  Kind           Username with password
+  Username       lakshmiprabha-shanmugam
+  Password       (paste your PAT token here)
+  ID             github-pat
+  Description    GitHub PAT for PLAYWRIGHT-POM-DEMOWEBSHOP
+
+  Click Save.
+
+  ──────────────────────────────────────────────────────────────────
+  Fix Step 3 — Attach the Credential to the Pipeline Job
+  ──────────────────────────────────────────────────────────────────
+  Go to:
+  Jenkins → PLAYWRIGHT-POM-DEMOWEBSHOP → Configure → Pipeline section
+
+  Field           Value
+  ──────────────────────────────────────────────────────────────────
+  Definition      Pipeline script from SCM
+  SCM             Git
+  Repository URL  https://github.com/lakshmiprabha-shanmugam/PLAYWRIGHT-POM-DEMOWEBSHOP.git
+  Credentials     Select "github-pat" from the dropdown
+  Branch          */main
+  Script Path     Jenkinsfile
+
+  Click Save → Build with Parameters.
+
+  The authentication error will be gone once github-pat is selected.
