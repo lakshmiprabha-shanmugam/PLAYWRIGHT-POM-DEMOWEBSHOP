@@ -1,21 +1,12 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
-import { LogoutPage } from '../pages/LogoutPage';
 import { CategoryNavigationPage } from '../pages/CategoryNavigationPage';
-import { config, url } from './config/testConfig';
-
-const EMAIL = config.users.standard.username;
-const PASSWORD = config.users.standard.password;
+import { url } from './config/testConfig';
 
 test.describe('Category Navigation - Left Panel Validation', () => {
   test.describe.configure({ timeout: 60000 });
 
   test('should validate left nav category count matches header menu', async ({ page }) => {
-    const loginPage = new LoginPage(page);
     const categoryPage = new CategoryNavigationPage(page);
-
-    await loginPage.navigate();
-    await loginPage.login({ email: EMAIL, password: PASSWORD });
 
     await page.goto(url('/'));
 
@@ -27,11 +18,7 @@ test.describe('Category Navigation - Left Panel Validation', () => {
   });
 
   test('should match each left nav category name with header menu', async ({ page }) => {
-    const loginPage = new LoginPage(page);
     const categoryPage = new CategoryNavigationPage(page);
-
-    await loginPage.navigate();
-    await loginPage.login({ email: EMAIL, password: PASSWORD });
 
     await page.goto(url('/'));
 
@@ -47,12 +34,7 @@ test.describe('Category Navigation - Left Panel Validation', () => {
   test('should navigate to each category page and display the correct title', async ({ page }) => {
     test.setTimeout(150000);
 
-    const loginPage = new LoginPage(page);
     const categoryPage = new CategoryNavigationPage(page);
-    const logoutPage = new LogoutPage(page);
-
-    await loginPage.navigate();
-    await loginPage.login({ email: EMAIL, password: PASSWORD });
 
     await page.goto(url('/'));
     await categoryPage.leftNavLinks.first().waitFor({ state: 'visible' });
@@ -68,8 +50,5 @@ test.describe('Category Navigation - Left Panel Validation', () => {
       const heading = await categoryPage.getPageHeading();
       expect(heading).toBe(categoryNames[i]);
     }
-
-    await logoutPage.logout();
-    await expect(page).toHaveURL(url('/'));
   });
 });

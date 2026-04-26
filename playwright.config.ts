@@ -1,6 +1,7 @@
 import { defineConfig, devices, type ReporterDescription } from '@playwright/test';
 
 const reporters: ReporterDescription[] = [
+  ...(process.env.JENKINS_URL ? [['./scripts/ascii-reporter.cjs'] as ReporterDescription] : []),
   ['html',  { open: 'never' }],
   ['junit', { outputFile: 'results.xml' }],
   ['allure-playwright', { outputFolder: 'allure-results' }],
