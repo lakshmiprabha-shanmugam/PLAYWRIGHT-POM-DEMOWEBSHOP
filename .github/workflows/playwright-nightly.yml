@@ -29,6 +29,9 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps ${{ matrix.project }}
 
+      - name: Clean allure results
+        run: rm -rf allure-results
+
       - name: Run full regression
         id: regression_tests
         run: npm run test:allure -- --project=${{ matrix.project }}

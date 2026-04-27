@@ -24,9 +24,12 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
+      - name: Clean allure results
+        run: rm -rf allure-results
+
       - name: Run smoke tests
         id: smoke_tests
-        run: npx playwright test --project=chromium --grep "@smoke" --grep-invert "@accessibility"
+        run: npx playwright test --project=chromium --grep "@smoke"
         continue-on-error: true
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
