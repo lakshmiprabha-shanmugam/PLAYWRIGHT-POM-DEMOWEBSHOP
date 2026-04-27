@@ -1,6 +1,6 @@
 import { Page, Locator } from '@playwright/test';
 import { url } from '../tests/config/testConfig';
-
+//updated file
 export class LoginPage {
   readonly page: Page;
   readonly emailInput: Locator;
