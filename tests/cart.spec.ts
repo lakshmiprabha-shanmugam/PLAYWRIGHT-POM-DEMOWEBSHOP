@@ -1,7 +1,7 @@
 import { test, expect, Page } from '@playwright/test';
 import { CartPage } from '../pages/CartPage';
 import { url } from './config/testConfig';
-
+//Test comment
 // Searches for a product and adds the first result to cart
 async function addProductToCart(page: Page, searchTerm: string): Promise<void> {
   await page.goto(url(`/search?q=${encodeURIComponent(searchTerm)}`));
