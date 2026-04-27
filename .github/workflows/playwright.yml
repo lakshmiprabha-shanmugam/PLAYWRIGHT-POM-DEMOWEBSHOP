@@ -24,8 +24,8 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
-      - name: Clean allure results
-        run: rm -rf allure-results
+      - name: Clean previous reports
+        run: rm -rf allure-results allure-report playwright-report test-results results.xml
 
       - name: Run smoke tests
         id: smoke_tests
@@ -96,13 +96,13 @@ jobs:
           echo "| \`allure-results-${{ github.run_number }}\` | Allure raw results |" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "### Viewing reports locally" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Allure** — download + extract \`allure-results-${{ github.run_number }}\`, then run:" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Allure** - download + extract \`allure-results-${{ github.run_number }}\` into a clean folder, then run:" >> "$GITHUB_STEP_SUMMARY"
           echo "\`\`\`" >> "$GITHUB_STEP_SUMMARY"
-          echo "npx allure serve allure-results" >> "$GITHUB_STEP_SUMMARY"
+          echo "npx allure serve ./allure-results-${{ github.run_number }}" >> "$GITHUB_STEP_SUMMARY"
           echo "\`\`\`" >> "$GITHUB_STEP_SUMMARY"
-          echo "> Do NOT open index.html directly — Allure requires an HTTP server to load its data files." >> "$GITHUB_STEP_SUMMARY"
+          echo "> Do NOT open index.html directly. Allure requires an HTTP server to load its data files." >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Playwright** — download + extract \`playwright-report-${{ github.run_number }}\`, then run:" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Playwright** - download + extract \`playwright-report-${{ github.run_number }}\`, then run:" >> "$GITHUB_STEP_SUMMARY"
           echo "\`\`\`" >> "$GITHUB_STEP_SUMMARY"
           echo "npx playwright show-report playwright-report" >> "$GITHUB_STEP_SUMMARY"
           echo "\`\`\`" >> "$GITHUB_STEP_SUMMARY"

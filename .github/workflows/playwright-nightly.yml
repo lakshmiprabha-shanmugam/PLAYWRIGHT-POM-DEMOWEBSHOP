@@ -29,8 +29,8 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps ${{ matrix.project }}
 
-      - name: Clean allure results
-        run: rm -rf allure-results
+      - name: Clean previous reports
+        run: rm -rf allure-results allure-report playwright-report test-results results.xml
 
       - name: Run full regression
         id: regression_tests
@@ -90,6 +90,11 @@ jobs:
           echo "- Download artifact: nightly-allure-report-${{ matrix.project }}-${{ github.run_id }}" >> "$GITHUB_STEP_SUMMARY"
           echo "- Download artifact: nightly-allure-results-${{ matrix.project }}-${{ github.run_id }}" >> "$GITHUB_STEP_SUMMARY"
           echo "- Download artifact: nightly-junit-results-${{ matrix.project }}-${{ github.run_id }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "To view Allure locally, extract the results artifact into a clean folder and run:" >> "$GITHUB_STEP_SUMMARY"
+          echo "\`\`\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "npx allure serve ./nightly-allure-results-${{ matrix.project }}-${{ github.run_id }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "\`\`\`" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Fail job when tests fail
         if: steps.regression_tests.outcome == 'failure'
