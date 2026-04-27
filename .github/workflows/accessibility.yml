@@ -1,13 +1,14 @@
-name: Playwright Tests
+name: Accessibility Tests
 
 on:
   push:
     branches: [main, develop]
-  pull_request:
-    branches: [main, develop]
-
+    paths:
+      - 'tests/accessibility/**'   # only if accessibility files changed
+  workflow_dispatch: # only manual, no automatic push trigger
+  
 jobs:
-  smoke:
+  accessibility:
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
@@ -16,7 +17,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
 
       - run: npm ci
@@ -24,9 +25,9 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
-      - name: Run smoke tests
-        id: smoke_tests
-        run: npx playwright test --project=chromium --grep "@smoke" --grep-invert "@accessibility"
+      - name: Run accessibility tests
+        id: accessibility_tests
+        run: npx playwright test --project=chromium --grep "@accessibility"
         continue-on-error: true
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
@@ -41,7 +42,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: playwright-report-${{ github.run_number }}
+          name: accessibility-playwright-report-${{ github.run_number }}
           path: playwright-report/
           if-no-files-found: warn
           retention-days: 30
@@ -50,7 +51,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: allure-report-${{ github.run_number }}
+          name: accessibility-allure-report-${{ github.run_number }}
           path: allure-report/
           if-no-files-found: warn
           retention-days: 30
@@ -59,7 +60,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: allure-results-${{ github.run_number }}
+          name: accessibility-allure-results-${{ github.run_number }}
           path: allure-results/
           if-no-files-found: warn
           retention-days: 30
@@ -68,42 +69,42 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: junit-results-${{ github.run_number }}
+          name: accessibility-junit-results-${{ github.run_number }}
           path: results.xml
           if-no-files-found: warn
           retention-days: 30
 
       - name: Upload test results on failure
         uses: actions/upload-artifact@v4
-        if: steps.smoke_tests.outcome == 'failure'
+        if: steps.accessibility_tests.outcome == 'failure'
         with:
-          name: test-results-${{ github.run_number }}
+          name: accessibility-test-results-${{ github.run_number }}
           path: test-results/
           retention-days: 7
 
-      - name: Add report summary
+      - name: Add accessibility report summary
         if: always()
         run: |
-          echo "## Smoke Test Reports" >> "$GITHUB_STEP_SUMMARY"
+          echo "## Accessibility Test Reports" >> "$GITHUB_STEP_SUMMARY"
           echo "### Artifacts for run **${{ github.run_number }}**" >> "$GITHUB_STEP_SUMMARY"
           echo "| Artifact | Contents |" >> "$GITHUB_STEP_SUMMARY"
           echo "|----------|----------|" >> "$GITHUB_STEP_SUMMARY"
-          echo "| \`playwright-report-${{ github.run_number }}\` | Playwright HTML report |" >> "$GITHUB_STEP_SUMMARY"
-          echo "| \`allure-report-${{ github.run_number }}\` | Allure HTML report |" >> "$GITHUB_STEP_SUMMARY"
-          echo "| \`allure-results-${{ github.run_number }}\` | Allure raw results |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| \`accessibility-playwright-report-${{ github.run_number }}\` | Playwright HTML report |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| \`accessibility-allure-report-${{ github.run_number }}\` | Allure HTML report |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| \`accessibility-allure-results-${{ github.run_number }}\` | Allure raw results |" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "### Viewing reports locally" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Allure** — download + extract \`allure-results-${{ github.run_number }}\`, then run:" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Allure** — download + extract \`accessibility-allure-results-${{ github.run_number }}\`, then run:" >> "$GITHUB_STEP_SUMMARY"
           echo "\`\`\`" >> "$GITHUB_STEP_SUMMARY"
           echo "npx allure serve allure-results" >> "$GITHUB_STEP_SUMMARY"
           echo "\`\`\`" >> "$GITHUB_STEP_SUMMARY"
           echo "> Do NOT open index.html directly — Allure requires an HTTP server to load its data files." >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Playwright** — download + extract \`playwright-report-${{ github.run_number }}\`, then run:" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Playwright** — download + extract \`accessibility-playwright-report-${{ github.run_number }}\`, then run:" >> "$GITHUB_STEP_SUMMARY"
           echo "\`\`\`" >> "$GITHUB_STEP_SUMMARY"
           echo "npx playwright show-report playwright-report" >> "$GITHUB_STEP_SUMMARY"
           echo "\`\`\`" >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Fail job when tests fail
-        if: steps.smoke_tests.outcome == 'failure'
+      - name: Fail job when accessibility tests fail
+        if: steps.accessibility_tests.outcome == 'failure'
         run: exit 1

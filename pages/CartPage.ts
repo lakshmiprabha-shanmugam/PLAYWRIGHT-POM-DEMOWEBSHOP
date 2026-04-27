@@ -1,6 +1,6 @@
 import { Page, Locator } from '@playwright/test';
 import { url } from '../tests/config/testConfig';
-
+//test comment
 export class CartPage {
   readonly page: Page;
   readonly cartItems: Locator;

@@ -1,168 +1,470 @@
-<testsuites id="" name="" tests="71" failures="0" skipped="0" errors="0" time="396.677843">
-<testsuite name="cart.spec.ts" timestamp="2026-04-26T04:09:15.871Z" hostname="chromium" tests="8" failures="0" skipped="0" time="46.964" errors="0">
-<testcase name="4.5 Shopping Cart › TC-CART-01: Add single item to cart @smoke" classname="cart.spec.ts" time="10.009">
-</testcase>
-<testcase name="4.5 Shopping Cart › TC-CART-02: Add multiple different items" classname="cart.spec.ts" time="7.754">
-</testcase>
-<testcase name="4.5 Shopping Cart › TC-CART-03: Update item quantity in cart" classname="cart.spec.ts" time="5.071">
-</testcase>
-<testcase name="4.5 Shopping Cart › TC-CART-04: Remove item from cart" classname="cart.spec.ts" time="5.176">
-</testcase>
-<testcase name="4.5 Shopping Cart › TC-CART-05: Cart persists after page refresh" classname="cart.spec.ts" time="4.841">
-</testcase>
-<testcase name="4.5 Shopping Cart › TC-CART-06: Empty cart message" classname="cart.spec.ts" time="4.572">
-</testcase>
-<testcase name="4.5 Shopping Cart › TC-CART-07: Cart total calculation" classname="cart.spec.ts" time="4.328">
-</testcase>
-<testcase name="4.5 Shopping Cart › TC-CART-08: Continue shopping from cart" classname="cart.spec.ts" time="5.213">
-</testcase>
-</testsuite>
-<testsuite name="categoryNavigation.spec.ts" timestamp="2026-04-26T04:09:15.871Z" hostname="chromium" tests="3" failures="0" skipped="0" time="23.226" errors="0">
-<testcase name="Category Navigation - Left Panel Validation › should validate left nav category count matches header menu" classname="categoryNavigation.spec.ts" time="4.959">
-</testcase>
-<testcase name="Category Navigation - Left Panel Validation › should match each left nav category name with header menu" classname="categoryNavigation.spec.ts" time="5.012">
-</testcase>
-<testcase name="Category Navigation - Left Panel Validation › should navigate to each category page and display the correct title" classname="categoryNavigation.spec.ts" time="13.255">
-</testcase>
-</testsuite>
-<testsuite name="checkout.spec.ts" timestamp="2026-04-26T04:09:15.871Z" hostname="chromium" tests="8" failures="0" skipped="0" time="92.924" errors="0">
-<testcase name="4.7 Checkout Flow › TC-CHK-01: Complete checkout - Purchase Order @smoke" classname="checkout.spec.ts" time="12.338">
-</testcase>
-<testcase name="4.7 Checkout Flow › TC-CHK-02: Complete checkout — Credit Card" classname="checkout.spec.ts" time="15.367">
-</testcase>
-<testcase name="4.7 Checkout Flow › TC-CHK-03: Checkout with empty billing fields" classname="checkout.spec.ts" time="9.327">
-</testcase>
-<testcase name="4.7 Checkout Flow › TC-CHK-04: Checkout — different shipping method" classname="checkout.spec.ts" time="14.824">
-</testcase>
-<testcase name="4.7 Checkout Flow › TC-CHK-05: Checkout — shipping same as billing" classname="checkout.spec.ts" time="10.811">
-</testcase>
-<testcase name="4.7 Checkout Flow › TC-CHK-06: Order confirmation details" classname="checkout.spec.ts" time="12.525">
-</testcase>
-<testcase name="4.7 Checkout Flow › TC-CHK-07: Cannot checkout with empty cart" classname="checkout.spec.ts" time="4.47">
-</testcase>
-<testcase name="4.7 Checkout Flow › TC-CHK-08: Order appears in account history" classname="checkout.spec.ts" time="13.262">
-</testcase>
-</testsuite>
-<testsuite name="homepage.spec.ts" timestamp="2026-04-26T04:09:15.871Z" hostname="chromium" tests="5" failures="0" skipped="0" time="37.631" errors="0">
-<testcase name="4.3 Homepage and Navigation › TC-HOME-01: Homepage loads correctly @smoke" classname="homepage.spec.ts" time="5.491">
-</testcase>
-<testcase name="4.3 Homepage and Navigation › TC-HOME-02: Top navigation links work" classname="homepage.spec.ts" time="16.563">
-</testcase>
-<testcase name="4.3 Homepage and Navigation › TC-HOME-03: Featured products displayed" classname="homepage.spec.ts" time="5.393">
-</testcase>
-<testcase name="4.3 Homepage and Navigation › TC-HOME-04: Cart icon shows item count" classname="homepage.spec.ts" time="5.155">
-</testcase>
-<testcase name="4.3 Homepage and Navigation › TC-HOME-05: Footer links present" classname="homepage.spec.ts" time="5.029">
-</testcase>
-</testsuite>
-<testsuite name="login.spec.ts" timestamp="2026-04-26T04:09:15.871Z" hostname="chromium" tests="4" failures="0" skipped="0" time="17.572" errors="0">
-<testcase name="4.2 Login and Logout › TC-AUTH-01: Successful login with valid credentials @smoke" classname="login.spec.ts" time="4.887">
-</testcase>
-<testcase name="4.2 Login and Logout › TC-AUTH-02: Login with invalid password" classname="login.spec.ts" time="4.969">
-</testcase>
-<testcase name="4.2 Login and Logout › TC-AUTH-03: Login with unregistered email" classname="login.spec.ts" time="3.972">
-</testcase>
-<testcase name="4.2 Login and Logout › TC-AUTH-04: Login with empty fields" classname="login.spec.ts" time="3.744">
-</testcase>
-</testsuite>
-<testsuite name="logout.spec.ts" timestamp="2026-04-26T04:09:15.871Z" hostname="chromium" tests="2" failures="0" skipped="0" time="8.652" errors="0">
-<testcase name="4.2 Login and Logout › TC-AUTH-05: Successful logout @smoke" classname="logout.spec.ts" time="5.043">
-</testcase>
-<testcase name="4.2 Login and Logout › TC-AUTH-06: Access protected page while logged out" classname="logout.spec.ts" time="3.609">
-</testcase>
-</testsuite>
-<testsuite name="register.spec.ts" timestamp="2026-04-26T04:09:15.871Z" hostname="chromium" tests="6" failures="0" skipped="0" time="24.414" errors="0">
-<testcase name="4.1 User Registration › TC-REG-01: Successful registration with valid data @smoke" classname="register.spec.ts" time="4.033">
-</testcase>
-<testcase name="4.1 User Registration › TC-REG-02: Registration with existing email" classname="register.spec.ts" time="5.614">
-</testcase>
-<testcase name="4.1 User Registration › TC-REG-03: Registration with empty required fields" classname="register.spec.ts" time="3.342">
-</testcase>
-<testcase name="4.1 User Registration › TC-REG-04: Registration with mismatched passwords" classname="register.spec.ts" time="3.579">
-</testcase>
-<testcase name="4.1 User Registration › TC-REG-05: Registration with invalid email format" classname="register.spec.ts" time="3.942">
-</testcase>
-<testcase name="4.1 User Registration › TC-REG-06: Registration with password too short" classname="register.spec.ts" time="3.904">
-</testcase>
-</testsuite>
-<testsuite name="registerCSV.spec.ts" timestamp="2026-04-26T04:09:15.871Z" hostname="chromium" tests="8" failures="0" skipped="0" time="32.866" errors="0">
-<testcase name="Registration - CSV Data Driven Tests › Valid registration - Female gender" classname="registerCSV.spec.ts" time="4.41">
-</testcase>
-<testcase name="Registration - CSV Data Driven Tests › Valid registration - Male gender" classname="registerCSV.spec.ts" time="4.633">
-</testcase>
-<testcase name="Registration - CSV Data Driven Tests › Registration fails - empty first name" classname="registerCSV.spec.ts" time="3.701">
-</testcase>
-<testcase name="Registration - CSV Data Driven Tests › Registration fails - empty last name" classname="registerCSV.spec.ts" time="4.253">
-</testcase>
-<testcase name="Registration - CSV Data Driven Tests › Registration fails - empty email" classname="registerCSV.spec.ts" time="4.163">
-</testcase>
-<testcase name="Registration - CSV Data Driven Tests › Registration fails - invalid email format" classname="registerCSV.spec.ts" time="4.209">
-</testcase>
-<testcase name="Registration - CSV Data Driven Tests › Registration fails - password too short" classname="registerCSV.spec.ts" time="3.888">
-</testcase>
-<testcase name="Registration - CSV Data Driven Tests › Registration fails - empty password" classname="registerCSV.spec.ts" time="3.609">
-</testcase>
-</testsuite>
-<testsuite name="registerDataDriven.spec.ts" timestamp="2026-04-26T04:09:15.871Z" hostname="chromium" tests="8" failures="0" skipped="0" time="31.59" errors="0">
-<testcase name="Registration - Data Driven Tests › Valid registration - Female gender" classname="registerDataDriven.spec.ts" time="4.365">
-</testcase>
-<testcase name="Registration - Data Driven Tests › Valid registration - Male gender" classname="registerDataDriven.spec.ts" time="4.944">
-</testcase>
-<testcase name="Registration - Data Driven Tests › Registration fails - empty first name" classname="registerDataDriven.spec.ts" time="4.045">
-</testcase>
-<testcase name="Registration - Data Driven Tests › Registration fails - empty last name" classname="registerDataDriven.spec.ts" time="3.628">
-</testcase>
-<testcase name="Registration - Data Driven Tests › Registration fails - empty email" classname="registerDataDriven.spec.ts" time="3.759">
-</testcase>
-<testcase name="Registration - Data Driven Tests › Registration fails - invalid email format" classname="registerDataDriven.spec.ts" time="3.881">
-</testcase>
-<testcase name="Registration - Data Driven Tests › Registration fails - password too short" classname="registerDataDriven.spec.ts" time="3.993">
-</testcase>
-<testcase name="Registration - Data Driven Tests › Registration fails - empty password" classname="registerDataDriven.spec.ts" time="2.975">
-</testcase>
-</testsuite>
-<testsuite name="registerExcel.spec.ts" timestamp="2026-04-26T04:09:15.871Z" hostname="chromium" tests="8" failures="0" skipped="0" time="34.196" errors="0">
-<testcase name="Registration - Excel Data Driven Tests › Register user: John Doe (Male)" classname="registerExcel.spec.ts" time="3.724">
-</testcase>
-<testcase name="Registration - Excel Data Driven Tests › Register user: Emma Smith (Female)" classname="registerExcel.spec.ts" time="4.186">
-</testcase>
-<testcase name="Registration - Excel Data Driven Tests › Register user: David Johnson (Male)" classname="registerExcel.spec.ts" time="4.097">
-</testcase>
-<testcase name="Registration - Excel Data Driven Tests › Register user: Olivia Brown (Female)" classname="registerExcel.spec.ts" time="5.346">
-</testcase>
-<testcase name="Registration - Excel Data Driven Tests › Register user: Michael Lee (Male)" classname="registerExcel.spec.ts" time="5.423">
-</testcase>
-<testcase name="Registration - Excel Data Driven Tests › Register user: Sophia Wilson (Female)" classname="registerExcel.spec.ts" time="3.87">
-</testcase>
-<testcase name="Registration - Excel Data Driven Tests › Register user: Daniel Taylor (Male)" classname="registerExcel.spec.ts" time="3.625">
-</testcase>
-<testcase name="Registration - Excel Data Driven Tests › Register user: Ava Anderson (Female)" classname="registerExcel.spec.ts" time="3.925">
-</testcase>
-</testsuite>
-<testsuite name="search.spec.ts" timestamp="2026-04-26T04:09:15.871Z" hostname="chromium" tests="6" failures="0" skipped="0" time="25.517" errors="0">
-<testcase name="4.4 Product Search › TC-SRCH-01: Search with valid keyword @smoke" classname="search.spec.ts" time="3.979">
-</testcase>
-<testcase name="4.4 Product Search › TC-SRCH-02: Search with no results" classname="search.spec.ts" time="3.861">
-</testcase>
-<testcase name="4.4 Product Search › TC-SRCH-03: Search with empty input" classname="search.spec.ts" time="3.386">
-</testcase>
-<testcase name="4.4 Product Search › TC-SRCH-04: Search is case-insensitive" classname="search.spec.ts" time="5.433">
-</testcase>
-<testcase name="4.4 Product Search › TC-SRCH-05: Search result sorting" classname="search.spec.ts" time="5.436">
-</testcase>
-<testcase name="4.4 Product Search › TC-SRCH-06: Search result pagination" classname="search.spec.ts" time="3.422">
-</testcase>
-</testsuite>
-<testsuite name="wishlist.spec.ts" timestamp="2026-04-26T04:09:15.871Z" hostname="chromium" tests="5" failures="0" skipped="0" time="189.624" errors="0">
-<testcase name="4.6 Wishlist › TC-WISH-01: Add item to wishlist @smoke" classname="wishlist.spec.ts" time="31.597">
-</testcase>
-<testcase name="4.6 Wishlist › TC-WISH-02: View wishlist" classname="wishlist.spec.ts" time="41.373">
-</testcase>
-<testcase name="4.6 Wishlist › TC-WISH-03: Add to cart from wishlist" classname="wishlist.spec.ts" time="35.251">
-</testcase>
-<testcase name="4.6 Wishlist › TC-WISH-04: Remove item from wishlist" classname="wishlist.spec.ts" time="53.819">
-</testcase>
-<testcase name="4.6 Wishlist › TC-WISH-05: Guest can add item to wishlist" classname="wishlist.spec.ts" time="27.584">
+<testsuites id="" name="" tests="6" failures="6" skipped="0" errors="0" time="66.232374">
+<testsuite name="accessibility.spec.ts" timestamp="2026-04-26T21:42:30.675Z" hostname="chromium" tests="6" failures="6" skipped="0" time="52.164" errors="0">
+<testcase name="Accessibility Tests › AXE-HOME-01: Homepage has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts" time="9.157">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\accessibility-Accessibilit-f3f3c-ty-violations-accessibility-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\accessibility-Accessibilit-f3f3c-ty-violations-accessibility-chromium\video.webm]]
+
+[[ATTACHMENT|test-results\accessibility-Accessibilit-f3f3c-ty-violations-accessibility-chromium\video-1.webm]]
+
+[[ATTACHMENT|test-results\accessibility-Accessibilit-f3f3c-ty-violations-accessibility-chromium\error-context.md]]
+]]>
+</system-out>
+<failure message="homepage has critical/serious accessibility violations. See homepage-axe-violations.json in the report attachments." type="expect.toEqual">
+<![CDATA[  [chromium] › accessibility.spec.ts:94:7 › Accessibility Tests › AXE-HOME-01: Homepage has no critical or serious accessibility violations @accessibility 
+
+    Error: homepage has critical/serious accessibility violations. See homepage-axe-violations.json in the report attachments.
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 39
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "help": "<html> element must have a lang attribute",
+    +     "id": "html-has-lang",
+    +     "impact": "serious",
+    +     "nodes": 1,
+    +     "targets": Array [
+    +       "html",
+    +     ],
+    +   },
+    +   Object {
+    +     "help": "Images must have alternative text",
+    +     "id": "image-alt",
+    +     "impact": "critical",
+    +     "nodes": 1,
+    +     "targets": Array [
+    +       ".nivo-main-image",
+    +     ],
+    +   },
+    +   Object {
+    +     "help": "Form elements must have labels",
+    +     "id": "label",
+    +     "impact": "critical",
+    +     "nodes": 2,
+    +     "targets": Array [
+    +       "#small-searchterms",
+    +       "#newsletter-email",
+    +     ],
+    +   },
+    +   Object {
+    +     "help": "Links must have discernible text",
+    +     "id": "link-name",
+    +     "impact": "serious",
+    +     "nodes": 1,
+    +     "targets": Array [
+    +       ".nivo-imageLink:nth-child(1)",
+    +     ],
+    +   },
+    + ]
+
+      52 |     blockingSummary,
+      53 |     `${pageName} has critical/serious accessibility violations. See ${pageName}-axe-violations.json in the report attachments.`
+    > 54 |   ).toEqual([]);
+         |     ^
+      55 | }
+      56 |
+      57 | async function addProductToCart(page: Page, searchTerm: string): Promise<void> {
+        at runAccessibilityScan (C:\Users\laksh\OneDrive\Desktop\Playwrite\POM Folder\PLAYWRIGHT-POM-DEMOWEBSHOP\tests\accessibility.spec.ts:54:5)
+        at C:\Users\laksh\OneDrive\Desktop\Playwrite\POM Folder\PLAYWRIGHT-POM-DEMOWEBSHOP\tests\accessibility.spec.ts:96:5
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\accessibility-Accessibilit-f3f3c-ty-violations-accessibility-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\accessibility-Accessibilit-f3f3c-ty-violations-accessibility-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\accessibility-Accessibilit-f3f3c-ty-violations-accessibility-chromium\video-1.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\accessibility-Accessibilit-f3f3c-ty-violations-accessibility-chromium\error-context.md
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility Tests › AXE-LOGIN-01: Login page has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts" time="5.06">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\accessibility-Accessibilit-ad78b-ty-violations-accessibility-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\accessibility-Accessibilit-ad78b-ty-violations-accessibility-chromium\video-1.webm]]
+
+[[ATTACHMENT|test-results\accessibility-Accessibilit-ad78b-ty-violations-accessibility-chromium\video.webm]]
+
+[[ATTACHMENT|test-results\accessibility-Accessibilit-ad78b-ty-violations-accessibility-chromium\error-context.md]]
+]]>
+</system-out>
+<failure message="login has critical/serious accessibility violations. See login-axe-violations.json in the report attachments." type="expect.toEqual">
+<![CDATA[  [chromium] › accessibility.spec.ts:99:7 › Accessibility Tests › AXE-LOGIN-01: Login page has no critical or serious accessibility violations @accessibility 
+
+    Error: login has critical/serious accessibility violations. See login-axe-violations.json in the report attachments.
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 21
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "help": "<html> element must have a lang attribute",
+    +     "id": "html-has-lang",
+    +     "impact": "serious",
+    +     "nodes": 1,
+    +     "targets": Array [
+    +       "html",
+    +     ],
+    +   },
+    +   Object {
+    +     "help": "Form elements must have labels",
+    +     "id": "label",
+    +     "impact": "critical",
+    +     "nodes": 2,
+    +     "targets": Array [
+    +       "#small-searchterms",
+    +       "#newsletter-email",
+    +     ],
+    +   },
+    + ]
+
+      52 |     blockingSummary,
+      53 |     `${pageName} has critical/serious accessibility violations. See ${pageName}-axe-violations.json in the report attachments.`
+    > 54 |   ).toEqual([]);
+         |     ^
+      55 | }
+      56 |
+      57 | async function addProductToCart(page: Page, searchTerm: string): Promise<void> {
+        at runAccessibilityScan (C:\Users\laksh\OneDrive\Desktop\Playwrite\POM Folder\PLAYWRIGHT-POM-DEMOWEBSHOP\tests\accessibility.spec.ts:54:5)
+        at C:\Users\laksh\OneDrive\Desktop\Playwrite\POM Folder\PLAYWRIGHT-POM-DEMOWEBSHOP\tests\accessibility.spec.ts:101:5
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\accessibility-Accessibilit-ad78b-ty-violations-accessibility-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\accessibility-Accessibilit-ad78b-ty-violations-accessibility-chromium\video-1.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\accessibility-Accessibilit-ad78b-ty-violations-accessibility-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\accessibility-Accessibilit-ad78b-ty-violations-accessibility-chromium\error-context.md
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility Tests › AXE-REGISTER-01: Register page has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts" time="5.718">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\accessibility-Accessibilit-2dc3c-ty-violations-accessibility-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\accessibility-Accessibilit-2dc3c-ty-violations-accessibility-chromium\video.webm]]
+
+[[ATTACHMENT|test-results\accessibility-Accessibilit-2dc3c-ty-violations-accessibility-chromium\video-1.webm]]
+
+[[ATTACHMENT|test-results\accessibility-Accessibilit-2dc3c-ty-violations-accessibility-chromium\error-context.md]]
+]]>
+</system-out>
+<failure message="register has critical/serious accessibility violations. See register-axe-violations.json in the report attachments." type="expect.toEqual">
+<![CDATA[  [chromium] › accessibility.spec.ts:104:7 › Accessibility Tests › AXE-REGISTER-01: Register page has no critical or serious accessibility violations @accessibility 
+
+    Error: register has critical/serious accessibility violations. See register-axe-violations.json in the report attachments.
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 21
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "help": "<html> element must have a lang attribute",
+    +     "id": "html-has-lang",
+    +     "impact": "serious",
+    +     "nodes": 1,
+    +     "targets": Array [
+    +       "html",
+    +     ],
+    +   },
+    +   Object {
+    +     "help": "Form elements must have labels",
+    +     "id": "label",
+    +     "impact": "critical",
+    +     "nodes": 2,
+    +     "targets": Array [
+    +       "#small-searchterms",
+    +       "#newsletter-email",
+    +     ],
+    +   },
+    + ]
+
+      52 |     blockingSummary,
+      53 |     `${pageName} has critical/serious accessibility violations. See ${pageName}-axe-violations.json in the report attachments.`
+    > 54 |   ).toEqual([]);
+         |     ^
+      55 | }
+      56 |
+      57 | async function addProductToCart(page: Page, searchTerm: string): Promise<void> {
+        at runAccessibilityScan (C:\Users\laksh\OneDrive\Desktop\Playwrite\POM Folder\PLAYWRIGHT-POM-DEMOWEBSHOP\tests\accessibility.spec.ts:54:5)
+        at C:\Users\laksh\OneDrive\Desktop\Playwrite\POM Folder\PLAYWRIGHT-POM-DEMOWEBSHOP\tests\accessibility.spec.ts:106:5
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\accessibility-Accessibilit-2dc3c-ty-violations-accessibility-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\accessibility-Accessibilit-2dc3c-ty-violations-accessibility-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\accessibility-Accessibilit-2dc3c-ty-violations-accessibility-chromium\video-1.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\accessibility-Accessibilit-2dc3c-ty-violations-accessibility-chromium\error-context.md
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility Tests › AXE-SEARCH-01: Product search page has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts" time="8.992">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\accessibility-Accessibilit-d68d6-ty-violations-accessibility-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\accessibility-Accessibilit-d68d6-ty-violations-accessibility-chromium\video-1.webm]]
+
+[[ATTACHMENT|test-results\accessibility-Accessibilit-d68d6-ty-violations-accessibility-chromium\video.webm]]
+
+[[ATTACHMENT|test-results\accessibility-Accessibilit-d68d6-ty-violations-accessibility-chromium\error-context.md]]
+]]>
+</system-out>
+<failure message="product-search has critical/serious accessibility violations. See product-search-axe-violations.json in the report attachments." type="expect.toEqual">
+<![CDATA[  [chromium] › accessibility.spec.ts:109:7 › Accessibility Tests › AXE-SEARCH-01: Product search page has no critical or serious accessibility violations @accessibility 
+
+    Error: product-search has critical/serious accessibility violations. See product-search-axe-violations.json in the report attachments.
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 32
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "help": "<html> element must have a lang attribute",
+    +     "id": "html-has-lang",
+    +     "impact": "serious",
+    +     "nodes": 1,
+    +     "targets": Array [
+    +       "html",
+    +     ],
+    +   },
+    +   Object {
+    +     "help": "Form elements must have labels",
+    +     "id": "label",
+    +     "impact": "critical",
+    +     "nodes": 2,
+    +     "targets": Array [
+    +       "#small-searchterms",
+    +       "#newsletter-email",
+    +     ],
+    +   },
+    +   Object {
+    +     "help": "Select element must have an accessible name",
+    +     "id": "select-name",
+    +     "impact": "critical",
+    +     "nodes": 3,
+    +     "targets": Array [
+    +       "#products-viewmode",
+    +       "#products-orderby",
+    +       "#products-pagesize",
+    +     ],
+    +   },
+    + ]
+
+      52 |     blockingSummary,
+      53 |     `${pageName} has critical/serious accessibility violations. See ${pageName}-axe-violations.json in the report attachments.`
+    > 54 |   ).toEqual([]);
+         |     ^
+      55 | }
+      56 |
+      57 | async function addProductToCart(page: Page, searchTerm: string): Promise<void> {
+        at runAccessibilityScan (C:\Users\laksh\OneDrive\Desktop\Playwrite\POM Folder\PLAYWRIGHT-POM-DEMOWEBSHOP\tests\accessibility.spec.ts:54:5)
+        at C:\Users\laksh\OneDrive\Desktop\Playwrite\POM Folder\PLAYWRIGHT-POM-DEMOWEBSHOP\tests\accessibility.spec.ts:111:5
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\accessibility-Accessibilit-d68d6-ty-violations-accessibility-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\accessibility-Accessibilit-d68d6-ty-violations-accessibility-chromium\video-1.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\accessibility-Accessibilit-d68d6-ty-violations-accessibility-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\accessibility-Accessibilit-d68d6-ty-violations-accessibility-chromium\error-context.md
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility Tests › AXE-CART-01: Cart page has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts" time="12.169">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\accessibility-Accessibilit-3e6e8-ty-violations-accessibility-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\accessibility-Accessibilit-3e6e8-ty-violations-accessibility-chromium\video.webm]]
+
+[[ATTACHMENT|test-results\accessibility-Accessibilit-3e6e8-ty-violations-accessibility-chromium\video-1.webm]]
+
+[[ATTACHMENT|test-results\accessibility-Accessibilit-3e6e8-ty-violations-accessibility-chromium\error-context.md]]
+]]>
+</system-out>
+<failure message="cart has critical/serious accessibility violations. See cart-axe-violations.json in the report attachments." type="expect.toEqual">
+<![CDATA[  [chromium] › accessibility.spec.ts:114:7 › Accessibility Tests › AXE-CART-01: Cart page has no critical or serious accessibility violations @accessibility 
+
+    Error: cart has critical/serious accessibility violations. See cart-axe-violations.json in the report attachments.
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 22
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "help": "<html> element must have a lang attribute",
+    +     "id": "html-has-lang",
+    +     "impact": "serious",
+    +     "nodes": 1,
+    +     "targets": Array [
+    +       "html",
+    +     ],
+    +   },
+    +   Object {
+    +     "help": "Form elements must have labels",
+    +     "id": "label",
+    +     "impact": "critical",
+    +     "nodes": 6,
+    +     "targets": Array [
+    +       "#small-searchterms",
+    +       "input[name=\"removefromcart\"]",
+    +       ".qty-input",
+    +     ],
+    +   },
+    + ]
+
+      52 |     blockingSummary,
+      53 |     `${pageName} has critical/serious accessibility violations. See ${pageName}-axe-violations.json in the report attachments.`
+    > 54 |   ).toEqual([]);
+         |     ^
+      55 | }
+      56 |
+      57 | async function addProductToCart(page: Page, searchTerm: string): Promise<void> {
+        at runAccessibilityScan (C:\Users\laksh\OneDrive\Desktop\Playwrite\POM Folder\PLAYWRIGHT-POM-DEMOWEBSHOP\tests\accessibility.spec.ts:54:5)
+        at C:\Users\laksh\OneDrive\Desktop\Playwrite\POM Folder\PLAYWRIGHT-POM-DEMOWEBSHOP\tests\accessibility.spec.ts:117:5
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\accessibility-Accessibilit-3e6e8-ty-violations-accessibility-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\accessibility-Accessibilit-3e6e8-ty-violations-accessibility-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\accessibility-Accessibilit-3e6e8-ty-violations-accessibility-chromium\video-1.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\accessibility-Accessibilit-3e6e8-ty-violations-accessibility-chromium\error-context.md
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility Tests › AXE-CHECKOUT-01: Checkout page has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts" time="11.068">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\accessibility-Accessibilit-1d81b-ty-violations-accessibility-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\accessibility-Accessibilit-1d81b-ty-violations-accessibility-chromium\video-1.webm]]
+
+[[ATTACHMENT|test-results\accessibility-Accessibilit-1d81b-ty-violations-accessibility-chromium\video.webm]]
+
+[[ATTACHMENT|test-results\accessibility-Accessibilit-1d81b-ty-violations-accessibility-chromium\error-context.md]]
+]]>
+</system-out>
+<failure message="checkout has critical/serious accessibility violations. See checkout-axe-violations.json in the report attachments." type="expect.toEqual">
+<![CDATA[  [chromium] › accessibility.spec.ts:120:7 › Accessibility Tests › AXE-CHECKOUT-01: Checkout page has no critical or serious accessibility violations @accessibility 
+
+    Error: checkout has critical/serious accessibility violations. See checkout-axe-violations.json in the report attachments.
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 31
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "help": "Elements must meet minimum color contrast ratio thresholds",
+    +     "id": "color-contrast",
+    +     "impact": "serious",
+    +     "nodes": 5,
+    +     "targets": Array [
+    +       "#opc-shipping > .step-title > h2",
+    +       "#opc-shipping_method > .step-title > h2",
+    +       "#opc-payment_method > .step-title > h2",
+    +     ],
+    +   },
+    +   Object {
+    +     "help": "<html> element must have a lang attribute",
+    +     "id": "html-has-lang",
+    +     "impact": "serious",
+    +     "nodes": 1,
+    +     "targets": Array [
+    +       "html",
+    +     ],
+    +   },
+    +   Object {
+    +     "help": "Form elements must have labels",
+    +     "id": "label",
+    +     "impact": "critical",
+    +     "nodes": 1,
+    +     "targets": Array [
+    +       "#small-searchterms",
+    +     ],
+    +   },
+    + ]
+
+      52 |     blockingSummary,
+      53 |     `${pageName} has critical/serious accessibility violations. See ${pageName}-axe-violations.json in the report attachments.`
+    > 54 |   ).toEqual([]);
+         |     ^
+      55 | }
+      56 |
+      57 | async function addProductToCart(page: Page, searchTerm: string): Promise<void> {
+        at runAccessibilityScan (C:\Users\laksh\OneDrive\Desktop\Playwrite\POM Folder\PLAYWRIGHT-POM-DEMOWEBSHOP\tests\accessibility.spec.ts:54:5)
+        at C:\Users\laksh\OneDrive\Desktop\Playwrite\POM Folder\PLAYWRIGHT-POM-DEMOWEBSHOP\tests\accessibility.spec.ts:127:5
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\accessibility-Accessibilit-1d81b-ty-violations-accessibility-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\accessibility-Accessibilit-1d81b-ty-violations-accessibility-chromium\video-1.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\accessibility-Accessibilit-1d81b-ty-violations-accessibility-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\accessibility-Accessibilit-1d81b-ty-violations-accessibility-chromium\error-context.md
+]]>
+</failure>
 </testcase>
 </testsuite>
 </testsuites>
