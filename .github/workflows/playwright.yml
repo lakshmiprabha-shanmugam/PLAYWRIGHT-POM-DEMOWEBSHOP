@@ -99,12 +99,15 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         if: always() && github.event_name == 'push' && github.ref == 'refs/heads/main'
         with:
+          name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
           path: allure-report/
 
       - name: Deploy Allure report to GitHub Pages
         id: deploy_allure_pages
         uses: actions/deploy-pages@v4
         if: always() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        with:
+          artifact_name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
 
       - name: Add report summary
         if: always()
