@@ -6,10 +6,19 @@ on:
   pull_request:
     branches: [main, develop]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   smoke:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy_allure_pages.outputs.page_url }}
 
     steps:
       - uses: actions/checkout@v4
@@ -84,6 +93,21 @@ jobs:
           path: test-results/
           retention-days: 7
 
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        if: always() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+      - name: Upload Allure report to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        if: always() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        with:
+          path: allure-report/
+
+      - name: Deploy Allure report to GitHub Pages
+        id: deploy_allure_pages
+        uses: actions/deploy-pages@v4
+        if: always() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+
       - name: Add report summary
         if: always()
         run: |
@@ -94,6 +118,9 @@ jobs:
           echo "| \`playwright-report-${{ github.run_number }}\` | Playwright HTML report |" >> "$GITHUB_STEP_SUMMARY"
           echo "| \`allure-report-${{ github.run_number }}\` | Allure HTML report |" >> "$GITHUB_STEP_SUMMARY"
           echo "| \`allure-results-${{ github.run_number }}\` | Allure raw results |" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "### Browser link" >> "$GITHUB_STEP_SUMMARY"
+          echo "Latest Allure report on GitHub Pages: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "### Viewing reports locally" >> "$GITHUB_STEP_SUMMARY"
           echo "**Allure** - download + extract \`allure-results-${{ github.run_number }}\` into a clean folder, then run:" >> "$GITHUB_STEP_SUMMARY"
