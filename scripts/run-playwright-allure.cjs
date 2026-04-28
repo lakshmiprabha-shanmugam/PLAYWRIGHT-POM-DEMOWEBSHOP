@@ -7,10 +7,16 @@ const npxCmd = isWindows ? 'npx.cmd' : 'npx';
 const testArgs = process.argv.slice(2);
 
 function run(command, args) {
-  return spawnSync(command, args, {
+  const result = spawnSync(command, args, {
     stdio: 'inherit',
-    shell: false,
+    shell: isWindows,
   });
+
+  if (result.error) {
+    console.error(`Failed to run "${command} ${args.join(' ')}": ${result.error.message}`);
+  }
+
+  return result;
 }
 
 for (const directory of ['allure-results', 'allure-report']) {
