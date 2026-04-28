@@ -91,13 +91,13 @@ jobs:
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-        if: always() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: always() && github.event_name == 'push' && github.ref == 'refs/heads/main' && !github.event.repository.private
         with:
           enablement: true
 
       - name: Upload Allure report to GitHub Pages
         uses: actions/upload-pages-artifact@v3
-        if: always() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: always() && github.event_name == 'push' && github.ref == 'refs/heads/main' && !github.event.repository.private
         with:
           name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
           path: allure-report/
@@ -105,7 +105,7 @@ jobs:
       - name: Deploy Allure report to GitHub Pages
         id: deploy_allure_pages
         uses: actions/deploy-pages@v4
-        if: always() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: always() && github.event_name == 'push' && github.ref == 'refs/heads/main' && !github.event.repository.private
         with:
           artifact_name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
 
@@ -121,7 +121,11 @@ jobs:
           echo "| \`allure-results-${{ github.run_number }}\` | Allure raw results |" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "### Browser link" >> "$GITHUB_STEP_SUMMARY"
-          echo "Latest Allure report on GitHub Pages: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" >> "$GITHUB_STEP_SUMMARY"
+          if [ "${{ github.event.repository.private }}" = "true" ]; then
+            echo "GitHub Pages is skipped because this repository is private. Download \`allure-report-${{ github.run_number }}\` from artifacts and serve it locally." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Latest Allure report on GitHub Pages: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" >> "$GITHUB_STEP_SUMMARY"
+          fi
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "### Viewing reports locally" >> "$GITHUB_STEP_SUMMARY"
           echo "**Allure** - download + extract \`allure-results-${{ github.run_number }}\` into a clean folder, then run:" >> "$GITHUB_STEP_SUMMARY"
