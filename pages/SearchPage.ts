@@ -35,6 +35,12 @@ export class SearchPage {
     await this.searchButton.click();
   }
 
+  async openFirstResultFor(keyword: string) {
+    await this.page.goto(url(`/search?q=${encodeURIComponent(keyword)}`));
+    await this.productNames.first().click();
+    await this.page.waitForLoadState('domcontentloaded');
+  }
+
   async getProductCount(): Promise<number> {
     return await this.searchResults.count();
   }

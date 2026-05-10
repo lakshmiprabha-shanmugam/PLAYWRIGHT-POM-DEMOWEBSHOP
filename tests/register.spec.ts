@@ -103,4 +103,20 @@ test.describe('4.1 User Registration', () => {
     await expect(registerPage.validationErrors).toContainText('least');
   });
 
+  test('TC-REG-07: Registration accepts minimum valid password length', async ({ page }) => {
+    const registerPage = new RegisterPage(page);
+
+    await registerPage.navigate();
+    await registerPage.register({
+      gender: 'Male',
+      firstName: 'Boundary',
+      lastName: 'User',
+      email: `minpwd+${Date.now()}@test.com`,
+      password: 'abc123',
+    });
+
+    await expect(page).toHaveURL(/registerresult/);
+    await expect(registerPage.successMessage).toHaveText('Your registration completed');
+  });
+
 });

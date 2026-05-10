@@ -1,8 +1,10 @@
 import { test, expect, Page } from '@playwright/test';
 import { WishlistPage } from '../pages/WishlistPage';
 import { LoginPage } from '../pages/LoginPage';
+import { ProductPage } from '../pages/ProductPage';
 import { RegisterPage } from '../pages/RegisterPage';
-import { config, url } from './config/testConfig';
+import { SearchPage } from '../pages/SearchPage';
+import { config } from './config/testConfig';
 
 const testEmail = `testwishlist+${Date.now()}@gmail.com`;
 const testPassword = config.users.standard.password;
@@ -33,16 +35,11 @@ async function loginAndAddToWishlist(page: Page, email: string, password: string
 }
 
 async function addProductToWishlist(page: Page, searchTerm: string) {
-  await page.goto(url(`/search?q=${encodeURIComponent(searchTerm)}`));
-  const productHref = await page.locator('.product-title a').first().getAttribute('href');
-  await page.goto(productHref!);
-  await page.waitForLoadState('domcontentloaded');
+  const searchPage = new SearchPage(page);
+  const productPage = new ProductPage(page);
 
-  const wishlistResponse = page.waitForResponse(
-    resp => resp.url().includes('/addproducttocart/') && resp.status() === 200
-  );
-  await page.locator('input[value="Add to wishlist"]').click();
-  await wishlistResponse;
+  await searchPage.openFirstResultFor(searchTerm);
+  await productPage.addToWishlist();
 }
 
 test.describe('4.6 Wishlist', () => {
@@ -105,7 +102,17 @@ test.describe('4.6 Wishlist', () => {
     await addProductToWishlist(page, wishlistProduct);
 
     await expect(page).toHaveURL(/health/);
-    await expect(page.locator('.bar-notification.success')).toBeVisible();
+    await expect(new WishlistPage(page).successNotification).toBeVisible();
+  });
+
+  test('TC-WISH-06: Empty wishlist message is shown', async ({ page }) => {
+    const wishlistPage = new WishlistPage(page);
+
+    await wishlistPage.navigate();
+    await wishlistPage.removeAllItems();
+
+    await expect(wishlistPage.emptyWishlistMessage).toBeVisible();
+    await expect(wishlistPage.emptyWishlistMessage).toContainText('The wishlist is empty!');
   });
 
 });

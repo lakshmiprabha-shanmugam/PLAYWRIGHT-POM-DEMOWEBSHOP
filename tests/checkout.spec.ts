@@ -1,7 +1,10 @@
 import { test, expect, Page } from '@playwright/test';
 import { CheckoutPage } from '../pages/CheckoutPage';
+import { CartPage } from '../pages/CartPage';
 import { LoginPage } from '../pages/LoginPage';
+import { ProductPage } from '../pages/ProductPage';
 import { RegisterPage } from '../pages/RegisterPage';
+import { SearchPage } from '../pages/SearchPage';
 import { config, url } from './config/testConfig';
 
 const testEmail = `testcheckout+${Date.now()}@gmail.com`;
@@ -37,25 +40,19 @@ test.beforeAll(async ({ browser }) => {
 // Logs in, adds a product to cart, accepts terms, and proceeds to checkout
 async function loginAndGoToCheckout(page: Page, email: string, password: string): Promise<void> {
   const loginPage = new LoginPage(page);
+  const searchPage = new SearchPage(page);
+  const productPage = new ProductPage(page);
+  const cartPage = new CartPage(page);
+
   await loginPage.navigate();
   await loginPage.login({ email, password });
 
-  await page.goto(url('/search?q=Blue+Jeans'));
-  await page.locator('.product-title a').first().click();
-  const addToCartButton = page.locator('.product-essential input[value="Add to cart"]').first();
-  await addToCartButton.waitFor({ state: 'visible' });
-  await Promise.all([
-    page.waitForResponse(resp => resp.url().includes('/addproducttocart/') && resp.status() === 200),
-    addToCartButton.click(),
-  ]);
+  await searchPage.openFirstResultFor('Blue Jeans');
+  await productPage.addToCart();
 
-  await page.goto(url('/cart'));
+  await cartPage.navigate();
   await page.waitForLoadState('domcontentloaded');
-  const termsCheckbox = page.locator('#termsofservice');
-  if (await termsCheckbox.isVisible()) {
-    await termsCheckbox.check();
-  }
-  await page.locator('#checkout').click();
+  await cartPage.proceedToCheckout({ acceptTerms: true });
   await page.waitForURL(/checkout/);
 }
 
@@ -201,6 +198,25 @@ test.describe('4.7 Checkout Flow', () => {
     await expect(page).toHaveURL(/customer\/orders/);
     await expect(page.getByText(/Order Number:\s*\d+/).first()).toBeVisible();
     await expect(page.getByRole('button', { name: 'Details' }).first()).toBeVisible();
+  });
+
+  test('TC-CHK-09: Cannot start checkout without accepting terms', async ({ page }) => {
+    const loginPage = new LoginPage(page);
+    const searchPage = new SearchPage(page);
+    const productPage = new ProductPage(page);
+    const cartPage = new CartPage(page);
+
+    await loginPage.navigate();
+    await loginPage.login({ email: testEmail, password: testPassword });
+
+    await searchPage.openFirstResultFor('Blue Jeans');
+    await productPage.addToCart();
+
+    await cartPage.navigate();
+    await cartPage.proceedToCheckout({ acceptTerms: false });
+
+    await expect(page).toHaveURL(/\/cart/);
+    await expect(cartPage.termsWarning).toBeVisible();
   });
 
 });

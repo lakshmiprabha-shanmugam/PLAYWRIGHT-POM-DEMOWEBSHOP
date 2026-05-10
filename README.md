@@ -24,6 +24,7 @@ End-to-end test automation framework for the Tricentis Demo Web Shop application
 |-- .github/workflows/             # GitHub Actions workflows
 |-- playwright.config.ts           # Playwright configuration
 |-- Jenkinsfile                    # Jenkins pipeline
+|-- TEST_COVERAGE.md               # Scenario coverage matrix
 |-- package.json                   # NPM scripts and dependencies
 ```
 
@@ -206,9 +207,15 @@ Data-driven registration tests use JSON, CSV, and Excel data sources from:
 - `testData/registrationData.csv`
 - `testData/registrationData.xlsx`
 
+## Test Coverage
+
+Coverage is tracked in `TEST_COVERAGE.md` and the text mapping file `Automation Test Case Mapping Table.txt`.
+
+The suite includes positive, negative, boundary, and edge-case scenarios across registration, authentication, homepage navigation, search, cart, wishlist, checkout, and accessibility.
+
 ## Development Notes
 
-- Page objects live in `pages/` and should contain reusable locators and page actions.
+- Page objects live in `pages/` and should contain reusable locators and page actions. Shared product actions are handled by `ProductPage`.
 - Test specs live in `tests/` and should keep assertions close to the user workflow being tested.
 - Shared runtime configuration belongs in `tests/config/testConfig.ts`.
 - Generated folders such as `playwright-report/`, `allure-report/`, `allure-results/`, and `test-results/` should not be committed.

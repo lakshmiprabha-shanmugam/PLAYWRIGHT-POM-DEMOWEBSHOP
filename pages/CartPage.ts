@@ -15,6 +15,9 @@ export class CartPage {
   readonly emptyCartMessage: Locator;
   readonly continueShoppingButton: Locator;
   readonly successNotification: Locator;
+  readonly termsOfServiceCheckbox: Locator;
+  readonly checkoutButton: Locator;
+  readonly termsWarning: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -30,6 +33,9 @@ export class CartPage {
     this.emptyCartMessage = page.locator('.order-summary-content:has-text("Your Shopping Cart is empty!")');
     this.continueShoppingButton = page.locator('input[name="continueshopping"]');
     this.successNotification = page.locator('.bar-notification.success');
+    this.termsOfServiceCheckbox = page.locator('#termsofservice');
+    this.checkoutButton = page.locator('#checkout');
+    this.termsWarning = page.locator('.terms-of-service-warning-box');
   }
 
   async navigate() {
@@ -68,5 +74,12 @@ export class CartPage {
       (inputs) => inputs.map(el => parseFloat((el as HTMLInputElement).value))
     );
     return values;
+  }
+
+  async proceedToCheckout(options: { acceptTerms?: boolean } = {}) {
+    if (options.acceptTerms && await this.termsOfServiceCheckbox.isVisible()) {
+      await this.termsOfServiceCheckbox.check();
+    }
+    await this.checkoutButton.click();
   }
 }

@@ -1,13 +1,13 @@
-<testsuites id="" name="" tests="6" failures="6" skipped="0" errors="0" time="66.232374">
-<testsuite name="accessibility.spec.ts" timestamp="2026-04-26T21:42:30.675Z" hostname="chromium" tests="6" failures="6" skipped="0" time="52.164" errors="0">
-<testcase name="Accessibility Tests › AXE-HOME-01: Homepage has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts" time="9.157">
+<testsuites id="" name="" tests="154" failures="6" skipped="120" errors="2" time="134.487068">
+<testsuite name="accessibility.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chromium" tests="6" failures="6" skipped="0" time="35.269" errors="0">
+<testcase name="Accessibility Tests › AXE-HOME-01: Homepage has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts" time="4.861">
 <system-out>
 <![CDATA[
 [[ATTACHMENT|test-results\accessibility-Accessibilit-f3f3c-ty-violations-accessibility-chromium\test-failed-1.png]]
 
-[[ATTACHMENT|test-results\accessibility-Accessibilit-f3f3c-ty-violations-accessibility-chromium\video.webm]]
-
 [[ATTACHMENT|test-results\accessibility-Accessibilit-f3f3c-ty-violations-accessibility-chromium\video-1.webm]]
+
+[[ATTACHMENT|test-results\accessibility-Accessibilit-f3f3c-ty-violations-accessibility-chromium\video.webm]]
 
 [[ATTACHMENT|test-results\accessibility-Accessibilit-f3f3c-ty-violations-accessibility-chromium\error-context.md]]
 ]]>
@@ -78,25 +78,25 @@
     ────────────────────────────────────────────────────────────────────────────────────────────────
 
     attachment #4: video (video/webm) ──────────────────────────────────────────────────────────────
-    ..\test-results\accessibility-Accessibilit-f3f3c-ty-violations-accessibility-chromium\video.webm
+    ..\test-results\accessibility-Accessibilit-f3f3c-ty-violations-accessibility-chromium\video-1.webm
     ────────────────────────────────────────────────────────────────────────────────────────────────
 
     attachment #5: video (video/webm) ──────────────────────────────────────────────────────────────
-    ..\test-results\accessibility-Accessibilit-f3f3c-ty-violations-accessibility-chromium\video-1.webm
+    ..\test-results\accessibility-Accessibilit-f3f3c-ty-violations-accessibility-chromium\video.webm
     ────────────────────────────────────────────────────────────────────────────────────────────────
 
     Error Context: ..\test-results\accessibility-Accessibilit-f3f3c-ty-violations-accessibility-chromium\error-context.md
 ]]>
 </failure>
 </testcase>
-<testcase name="Accessibility Tests › AXE-LOGIN-01: Login page has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts" time="5.06">
+<testcase name="Accessibility Tests › AXE-LOGIN-01: Login page has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts" time="3.444">
 <system-out>
 <![CDATA[
 [[ATTACHMENT|test-results\accessibility-Accessibilit-ad78b-ty-violations-accessibility-chromium\test-failed-1.png]]
 
-[[ATTACHMENT|test-results\accessibility-Accessibilit-ad78b-ty-violations-accessibility-chromium\video-1.webm]]
-
 [[ATTACHMENT|test-results\accessibility-Accessibilit-ad78b-ty-violations-accessibility-chromium\video.webm]]
+
+[[ATTACHMENT|test-results\accessibility-Accessibilit-ad78b-ty-violations-accessibility-chromium\video-1.webm]]
 
 [[ATTACHMENT|test-results\accessibility-Accessibilit-ad78b-ty-violations-accessibility-chromium\error-context.md]]
 ]]>
@@ -149,18 +149,18 @@
     ────────────────────────────────────────────────────────────────────────────────────────────────
 
     attachment #4: video (video/webm) ──────────────────────────────────────────────────────────────
-    ..\test-results\accessibility-Accessibilit-ad78b-ty-violations-accessibility-chromium\video-1.webm
+    ..\test-results\accessibility-Accessibilit-ad78b-ty-violations-accessibility-chromium\video.webm
     ────────────────────────────────────────────────────────────────────────────────────────────────
 
     attachment #5: video (video/webm) ──────────────────────────────────────────────────────────────
-    ..\test-results\accessibility-Accessibilit-ad78b-ty-violations-accessibility-chromium\video.webm
+    ..\test-results\accessibility-Accessibilit-ad78b-ty-violations-accessibility-chromium\video-1.webm
     ────────────────────────────────────────────────────────────────────────────────────────────────
 
     Error Context: ..\test-results\accessibility-Accessibilit-ad78b-ty-violations-accessibility-chromium\error-context.md
 ]]>
 </failure>
 </testcase>
-<testcase name="Accessibility Tests › AXE-REGISTER-01: Register page has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts" time="5.718">
+<testcase name="Accessibility Tests › AXE-REGISTER-01: Register page has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts" time="4.932">
 <system-out>
 <![CDATA[
 [[ATTACHMENT|test-results\accessibility-Accessibilit-2dc3c-ty-violations-accessibility-chromium\test-failed-1.png]]
@@ -231,7 +231,7 @@
 ]]>
 </failure>
 </testcase>
-<testcase name="Accessibility Tests › AXE-SEARCH-01: Product search page has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts" time="8.992">
+<testcase name="Accessibility Tests › AXE-SEARCH-01: Product search page has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts" time="5.073">
 <system-out>
 <![CDATA[
 [[ATTACHMENT|test-results\accessibility-Accessibilit-d68d6-ty-violations-accessibility-chromium\test-failed-1.png]]
@@ -313,14 +313,14 @@
 ]]>
 </failure>
 </testcase>
-<testcase name="Accessibility Tests › AXE-CART-01: Cart page has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts" time="12.169">
+<testcase name="Accessibility Tests › AXE-CART-01: Cart page has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts" time="8.161">
 <system-out>
 <![CDATA[
 [[ATTACHMENT|test-results\accessibility-Accessibilit-3e6e8-ty-violations-accessibility-chromium\test-failed-1.png]]
 
-[[ATTACHMENT|test-results\accessibility-Accessibilit-3e6e8-ty-violations-accessibility-chromium\video.webm]]
-
 [[ATTACHMENT|test-results\accessibility-Accessibilit-3e6e8-ty-violations-accessibility-chromium\video-1.webm]]
+
+[[ATTACHMENT|test-results\accessibility-Accessibilit-3e6e8-ty-violations-accessibility-chromium\video.webm]]
 
 [[ATTACHMENT|test-results\accessibility-Accessibilit-3e6e8-ty-violations-accessibility-chromium\error-context.md]]
 ]]>
@@ -374,25 +374,25 @@
     ────────────────────────────────────────────────────────────────────────────────────────────────
 
     attachment #4: video (video/webm) ──────────────────────────────────────────────────────────────
-    ..\test-results\accessibility-Accessibilit-3e6e8-ty-violations-accessibility-chromium\video.webm
+    ..\test-results\accessibility-Accessibilit-3e6e8-ty-violations-accessibility-chromium\video-1.webm
     ────────────────────────────────────────────────────────────────────────────────────────────────
 
     attachment #5: video (video/webm) ──────────────────────────────────────────────────────────────
-    ..\test-results\accessibility-Accessibilit-3e6e8-ty-violations-accessibility-chromium\video-1.webm
+    ..\test-results\accessibility-Accessibilit-3e6e8-ty-violations-accessibility-chromium\video.webm
     ────────────────────────────────────────────────────────────────────────────────────────────────
 
     Error Context: ..\test-results\accessibility-Accessibilit-3e6e8-ty-violations-accessibility-chromium\error-context.md
 ]]>
 </failure>
 </testcase>
-<testcase name="Accessibility Tests › AXE-CHECKOUT-01: Checkout page has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts" time="11.068">
+<testcase name="Accessibility Tests › AXE-CHECKOUT-01: Checkout page has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts" time="8.798">
 <system-out>
 <![CDATA[
 [[ATTACHMENT|test-results\accessibility-Accessibilit-1d81b-ty-violations-accessibility-chromium\test-failed-1.png]]
 
-[[ATTACHMENT|test-results\accessibility-Accessibilit-1d81b-ty-violations-accessibility-chromium\video-1.webm]]
-
 [[ATTACHMENT|test-results\accessibility-Accessibilit-1d81b-ty-violations-accessibility-chromium\video.webm]]
+
+[[ATTACHMENT|test-results\accessibility-Accessibilit-1d81b-ty-violations-accessibility-chromium\video-1.webm]]
 
 [[ATTACHMENT|test-results\accessibility-Accessibilit-1d81b-ty-violations-accessibility-chromium\error-context.md]]
 ]]>
@@ -455,16 +455,656 @@
     ────────────────────────────────────────────────────────────────────────────────────────────────
 
     attachment #4: video (video/webm) ──────────────────────────────────────────────────────────────
-    ..\test-results\accessibility-Accessibilit-1d81b-ty-violations-accessibility-chromium\video-1.webm
+    ..\test-results\accessibility-Accessibilit-1d81b-ty-violations-accessibility-chromium\video.webm
     ────────────────────────────────────────────────────────────────────────────────────────────────
 
     attachment #5: video (video/webm) ──────────────────────────────────────────────────────────────
-    ..\test-results\accessibility-Accessibilit-1d81b-ty-violations-accessibility-chromium\video.webm
+    ..\test-results\accessibility-Accessibilit-1d81b-ty-violations-accessibility-chromium\video-1.webm
     ────────────────────────────────────────────────────────────────────────────────────────────────
 
     Error Context: ..\test-results\accessibility-Accessibilit-1d81b-ty-violations-accessibility-chromium\error-context.md
 ]]>
 </failure>
+</testcase>
+</testsuite>
+<testsuite name="cart.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chromium" tests="8" failures="0" skipped="0" time="49.067" errors="0">
+<testcase name="4.5 Shopping Cart › TC-CART-01: Add single item to cart @smoke" classname="cart.spec.ts" time="8.757">
+</testcase>
+<testcase name="4.5 Shopping Cart › TC-CART-02: Add multiple different items" classname="cart.spec.ts" time="7.903">
+</testcase>
+<testcase name="4.5 Shopping Cart › TC-CART-03: Update item quantity in cart" classname="cart.spec.ts" time="6.205">
+</testcase>
+<testcase name="4.5 Shopping Cart › TC-CART-04: Remove item from cart" classname="cart.spec.ts" time="5.733">
+</testcase>
+<testcase name="4.5 Shopping Cart › TC-CART-05: Cart persists after page refresh" classname="cart.spec.ts" time="4.683">
+</testcase>
+<testcase name="4.5 Shopping Cart › TC-CART-06: Empty cart message" classname="cart.spec.ts" time="5.18">
+</testcase>
+<testcase name="4.5 Shopping Cart › TC-CART-07: Cart total calculation" classname="cart.spec.ts" time="5.149">
+</testcase>
+<testcase name="4.5 Shopping Cart › TC-CART-08: Continue shopping from cart" classname="cart.spec.ts" time="5.457">
+</testcase>
+</testsuite>
+<testsuite name="categoryNavigation.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chromium" tests="3" failures="0" skipped="0" time="15.442" errors="0">
+<testcase name="Category Navigation - Left Panel Validation › should validate left nav category count matches header menu" classname="categoryNavigation.spec.ts" time="4.5">
+</testcase>
+<testcase name="Category Navigation - Left Panel Validation › should match each left nav category name with header menu" classname="categoryNavigation.spec.ts" time="3.038">
+</testcase>
+<testcase name="Category Navigation - Left Panel Validation › should navigate to each category page and display the correct title" classname="categoryNavigation.spec.ts" time="7.904">
+</testcase>
+</testsuite>
+<testsuite name="checkout.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chromium" tests="8" failures="0" skipped="2" time="53.811" errors="1">
+<testcase name="4.7 Checkout Flow › TC-CHK-01: Complete checkout - Purchase Order @smoke" classname="checkout.spec.ts" time="12.274">
+</testcase>
+<testcase name="4.7 Checkout Flow › TC-CHK-02: Complete checkout — Credit Card" classname="checkout.spec.ts" time="12.448">
+</testcase>
+<testcase name="4.7 Checkout Flow › TC-CHK-03: Checkout with empty billing fields" classname="checkout.spec.ts" time="7.29">
+</testcase>
+<testcase name="4.7 Checkout Flow › TC-CHK-04: Checkout — different shipping method" classname="checkout.spec.ts" time="10.685">
+</testcase>
+<testcase name="4.7 Checkout Flow › TC-CHK-05: Checkout — shipping same as billing" classname="checkout.spec.ts" time="8.931">
+</testcase>
+<testcase name="4.7 Checkout Flow › TC-CHK-06: Order confirmation details" classname="checkout.spec.ts" time="2.183">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\checkout-4-7-Checkout-Flow-8965a--Order-confirmation-details-chromium\error-context.md]]
+]]>
+</system-out>
+<error message="locator.fill: Target page, context or browser has been closed" type="Error">
+<![CDATA[  [chromium] › checkout.spec.ts:156:7 › 4.7 Checkout Flow › TC-CHK-06: Order confirmation details ──
+
+    Error: locator.fill: Target page, context or browser has been closed
+    Call log:
+      - waiting for getByRole('textbox', { name: 'Email:' })
+        - locator resolved to <input value="" id="Email" type="text" name="Email" class="email" autofocus="autofocus"/>
+        - fill("testcheckout+1778376570644@gmail.com")
+      - attempting fill action
+        - waiting for element to be visible, enabled and editable
+
+
+       at ..\pages\LoginPage.ts:32
+
+      30 |
+      31 |   async login(data: { email: string; password: string }) {
+    > 32 |     await this.emailInput.fill(data.email);
+         |                           ^
+      33 |     await this.passwordInput.fill(data.password);
+      34 |     await this.loginButton.click();
+      35 |   }
+        at LoginPage.login (C:\Users\laksh\OneDrive\Desktop\Playwrite\POM Folder\PLAYWRIGHT-POM-DEMOWEBSHOP\pages\LoginPage.ts:32:27)
+        at loginAndGoToCheckout (C:\Users\laksh\OneDrive\Desktop\Playwrite\POM Folder\PLAYWRIGHT-POM-DEMOWEBSHOP\tests\checkout.spec.ts:41:19)
+        at C:\Users\laksh\OneDrive\Desktop\Playwrite\POM Folder\PLAYWRIGHT-POM-DEMOWEBSHOP\tests\checkout.spec.ts:159:5
+
+    Error Context: ..\test-results\checkout-4-7-Checkout-Flow-8965a--Order-confirmation-details-chromium\error-context.md
+]]>
+</error>
+</testcase>
+<testcase name="4.7 Checkout Flow › TC-CHK-07: Cannot checkout with empty cart" classname="checkout.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.7 Checkout Flow › TC-CHK-08: Order appears in account history" classname="checkout.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="homepage.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chromium" tests="5" failures="0" skipped="0" time="24.512" errors="0">
+<testcase name="4.3 Homepage and Navigation › TC-HOME-01: Homepage loads correctly @smoke" classname="homepage.spec.ts" time="3.137">
+</testcase>
+<testcase name="4.3 Homepage and Navigation › TC-HOME-02: Top navigation links work" classname="homepage.spec.ts" time="11.856">
+</testcase>
+<testcase name="4.3 Homepage and Navigation › TC-HOME-03: Featured products displayed" classname="homepage.spec.ts" time="2.713">
+</testcase>
+<testcase name="4.3 Homepage and Navigation › TC-HOME-04: Cart icon shows item count" classname="homepage.spec.ts" time="3.174">
+</testcase>
+<testcase name="4.3 Homepage and Navigation › TC-HOME-05: Footer links present" classname="homepage.spec.ts" time="3.632">
+</testcase>
+</testsuite>
+<testsuite name="login.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chromium" tests="4" failures="0" skipped="0" time="12.821" errors="0">
+<testcase name="4.2 Login and Logout › TC-AUTH-01: Successful login with valid credentials @smoke" classname="login.spec.ts" time="3.808">
+</testcase>
+<testcase name="4.2 Login and Logout › TC-AUTH-02: Login with invalid password" classname="login.spec.ts" time="3.025">
+</testcase>
+<testcase name="4.2 Login and Logout › TC-AUTH-03: Login with unregistered email" classname="login.spec.ts" time="3.105">
+</testcase>
+<testcase name="4.2 Login and Logout › TC-AUTH-04: Login with empty fields" classname="login.spec.ts" time="2.883">
+</testcase>
+</testsuite>
+<testsuite name="logout.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chromium" tests="2" failures="0" skipped="0" time="3.86" errors="1">
+<testcase name="4.2 Login and Logout › TC-AUTH-05: Successful logout @smoke" classname="logout.spec.ts" time="3.86">
+</testcase>
+<testcase name="4.2 Login and Logout › TC-AUTH-06: Access protected page while logged out" classname="logout.spec.ts" time="0">
+<error message="page.goto: Target page, context or browser has been closed" type="Error">
+<![CDATA[  [chromium] › logout.spec.ts:42:7 › 4.2 Login and Logout › TC-AUTH-06: Access protected page while logged out 
+
+    Error: page.goto: Target page, context or browser has been closed
+    Call log:
+      - navigating to "https://demowebshop.tricentis.com/register", waiting until "load"
+
+
+       at ..\pages\RegisterPage.ts:34
+
+      32 |
+      33 |   async navigate() {
+    > 34 |     await this.page.goto(url('/register'));
+         |                     ^
+      35 |   }
+      36 |
+      37 |   async register(data: {
+        at RegisterPage.navigate (C:\Users\laksh\OneDrive\Desktop\Playwrite\POM Folder\PLAYWRIGHT-POM-DEMOWEBSHOP\pages\RegisterPage.ts:34:21)
+        at C:\Users\laksh\OneDrive\Desktop\Playwrite\POM Folder\PLAYWRIGHT-POM-DEMOWEBSHOP\tests\logout.spec.ts:15:22
+]]>
+</error>
+</testcase>
+</testsuite>
+<testsuite name="register.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chromium" tests="6" failures="0" skipped="6" time="0" errors="0">
+<testcase name="4.1 User Registration › TC-REG-01: Successful registration with valid data @smoke" classname="register.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.1 User Registration › TC-REG-02: Registration with existing email" classname="register.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.1 User Registration › TC-REG-03: Registration with empty required fields" classname="register.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.1 User Registration › TC-REG-04: Registration with mismatched passwords" classname="register.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.1 User Registration › TC-REG-05: Registration with invalid email format" classname="register.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.1 User Registration › TC-REG-06: Registration with password too short" classname="register.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="registerCSV.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chromium" tests="8" failures="0" skipped="8" time="0" errors="0">
+<testcase name="Registration - CSV Data Driven Tests › Valid registration - Female gender" classname="registerCSV.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - CSV Data Driven Tests › Valid registration - Male gender" classname="registerCSV.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - CSV Data Driven Tests › Registration fails - empty first name" classname="registerCSV.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - CSV Data Driven Tests › Registration fails - empty last name" classname="registerCSV.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - CSV Data Driven Tests › Registration fails - empty email" classname="registerCSV.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - CSV Data Driven Tests › Registration fails - invalid email format" classname="registerCSV.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - CSV Data Driven Tests › Registration fails - password too short" classname="registerCSV.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - CSV Data Driven Tests › Registration fails - empty password" classname="registerCSV.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="registerDataDriven.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chromium" tests="8" failures="0" skipped="8" time="0" errors="0">
+<testcase name="Registration - Data Driven Tests › Valid registration - Female gender" classname="registerDataDriven.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Data Driven Tests › Valid registration - Male gender" classname="registerDataDriven.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Data Driven Tests › Registration fails - empty first name" classname="registerDataDriven.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Data Driven Tests › Registration fails - empty last name" classname="registerDataDriven.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Data Driven Tests › Registration fails - empty email" classname="registerDataDriven.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Data Driven Tests › Registration fails - invalid email format" classname="registerDataDriven.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Data Driven Tests › Registration fails - password too short" classname="registerDataDriven.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Data Driven Tests › Registration fails - empty password" classname="registerDataDriven.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="registerExcel.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chromium" tests="8" failures="0" skipped="8" time="0" errors="0">
+<testcase name="Registration - Excel Data Driven Tests › Register user: John Doe (Male)" classname="registerExcel.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Excel Data Driven Tests › Register user: Emma Smith (Female)" classname="registerExcel.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Excel Data Driven Tests › Register user: David Johnson (Male)" classname="registerExcel.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Excel Data Driven Tests › Register user: Olivia Brown (Female)" classname="registerExcel.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Excel Data Driven Tests › Register user: Michael Lee (Male)" classname="registerExcel.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Excel Data Driven Tests › Register user: Sophia Wilson (Female)" classname="registerExcel.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Excel Data Driven Tests › Register user: Daniel Taylor (Male)" classname="registerExcel.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Excel Data Driven Tests › Register user: Ava Anderson (Female)" classname="registerExcel.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="search.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chromium" tests="6" failures="0" skipped="6" time="0" errors="0">
+<testcase name="4.4 Product Search › TC-SRCH-01: Search with valid keyword @smoke" classname="search.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.4 Product Search › TC-SRCH-02: Search with no results" classname="search.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.4 Product Search › TC-SRCH-03: Search with empty input" classname="search.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.4 Product Search › TC-SRCH-04: Search is case-insensitive" classname="search.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.4 Product Search › TC-SRCH-05: Search result sorting" classname="search.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.4 Product Search › TC-SRCH-06: Search result pagination" classname="search.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="wishlist.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chromium" tests="5" failures="0" skipped="5" time="0" errors="0">
+<testcase name="4.6 Wishlist › TC-WISH-01: Add item to wishlist @smoke" classname="wishlist.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.6 Wishlist › TC-WISH-02: View wishlist" classname="wishlist.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.6 Wishlist › TC-WISH-03: Add to cart from wishlist" classname="wishlist.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.6 Wishlist › TC-WISH-04: Remove item from wishlist" classname="wishlist.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.6 Wishlist › TC-WISH-05: Guest can add item to wishlist" classname="wishlist.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="accessibility.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chrome" tests="6" failures="0" skipped="6" time="0" errors="0">
+<testcase name="Accessibility Tests › AXE-HOME-01: Homepage has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Accessibility Tests › AXE-LOGIN-01: Login page has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Accessibility Tests › AXE-REGISTER-01: Register page has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Accessibility Tests › AXE-SEARCH-01: Product search page has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Accessibility Tests › AXE-CART-01: Cart page has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Accessibility Tests › AXE-CHECKOUT-01: Checkout page has no critical or serious accessibility violations @accessibility" classname="accessibility.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="cart.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chrome" tests="8" failures="0" skipped="8" time="0" errors="0">
+<testcase name="4.5 Shopping Cart › TC-CART-01: Add single item to cart @smoke" classname="cart.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.5 Shopping Cart › TC-CART-02: Add multiple different items" classname="cart.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.5 Shopping Cart › TC-CART-03: Update item quantity in cart" classname="cart.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.5 Shopping Cart › TC-CART-04: Remove item from cart" classname="cart.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.5 Shopping Cart › TC-CART-05: Cart persists after page refresh" classname="cart.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.5 Shopping Cart › TC-CART-06: Empty cart message" classname="cart.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.5 Shopping Cart › TC-CART-07: Cart total calculation" classname="cart.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.5 Shopping Cart › TC-CART-08: Continue shopping from cart" classname="cart.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="categoryNavigation.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chrome" tests="3" failures="0" skipped="3" time="0" errors="0">
+<testcase name="Category Navigation - Left Panel Validation › should validate left nav category count matches header menu" classname="categoryNavigation.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Category Navigation - Left Panel Validation › should match each left nav category name with header menu" classname="categoryNavigation.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Category Navigation - Left Panel Validation › should navigate to each category page and display the correct title" classname="categoryNavigation.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="checkout.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chrome" tests="8" failures="0" skipped="8" time="0" errors="0">
+<testcase name="4.7 Checkout Flow › TC-CHK-01: Complete checkout - Purchase Order @smoke" classname="checkout.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.7 Checkout Flow › TC-CHK-02: Complete checkout — Credit Card" classname="checkout.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.7 Checkout Flow › TC-CHK-03: Checkout with empty billing fields" classname="checkout.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.7 Checkout Flow › TC-CHK-04: Checkout — different shipping method" classname="checkout.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.7 Checkout Flow › TC-CHK-05: Checkout — shipping same as billing" classname="checkout.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.7 Checkout Flow › TC-CHK-06: Order confirmation details" classname="checkout.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.7 Checkout Flow › TC-CHK-07: Cannot checkout with empty cart" classname="checkout.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.7 Checkout Flow › TC-CHK-08: Order appears in account history" classname="checkout.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="homepage.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chrome" tests="5" failures="0" skipped="5" time="0" errors="0">
+<testcase name="4.3 Homepage and Navigation › TC-HOME-01: Homepage loads correctly @smoke" classname="homepage.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.3 Homepage and Navigation › TC-HOME-02: Top navigation links work" classname="homepage.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.3 Homepage and Navigation › TC-HOME-03: Featured products displayed" classname="homepage.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.3 Homepage and Navigation › TC-HOME-04: Cart icon shows item count" classname="homepage.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.3 Homepage and Navigation › TC-HOME-05: Footer links present" classname="homepage.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="login.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chrome" tests="4" failures="0" skipped="4" time="0" errors="0">
+<testcase name="4.2 Login and Logout › TC-AUTH-01: Successful login with valid credentials @smoke" classname="login.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.2 Login and Logout › TC-AUTH-02: Login with invalid password" classname="login.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.2 Login and Logout › TC-AUTH-03: Login with unregistered email" classname="login.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.2 Login and Logout › TC-AUTH-04: Login with empty fields" classname="login.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="logout.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chrome" tests="2" failures="0" skipped="2" time="0" errors="0">
+<testcase name="4.2 Login and Logout › TC-AUTH-05: Successful logout @smoke" classname="logout.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.2 Login and Logout › TC-AUTH-06: Access protected page while logged out" classname="logout.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="register.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chrome" tests="6" failures="0" skipped="6" time="0" errors="0">
+<testcase name="4.1 User Registration › TC-REG-01: Successful registration with valid data @smoke" classname="register.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.1 User Registration › TC-REG-02: Registration with existing email" classname="register.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.1 User Registration › TC-REG-03: Registration with empty required fields" classname="register.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.1 User Registration › TC-REG-04: Registration with mismatched passwords" classname="register.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.1 User Registration › TC-REG-05: Registration with invalid email format" classname="register.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.1 User Registration › TC-REG-06: Registration with password too short" classname="register.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="registerCSV.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chrome" tests="8" failures="0" skipped="8" time="0" errors="0">
+<testcase name="Registration - CSV Data Driven Tests › Valid registration - Female gender" classname="registerCSV.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - CSV Data Driven Tests › Valid registration - Male gender" classname="registerCSV.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - CSV Data Driven Tests › Registration fails - empty first name" classname="registerCSV.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - CSV Data Driven Tests › Registration fails - empty last name" classname="registerCSV.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - CSV Data Driven Tests › Registration fails - empty email" classname="registerCSV.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - CSV Data Driven Tests › Registration fails - invalid email format" classname="registerCSV.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - CSV Data Driven Tests › Registration fails - password too short" classname="registerCSV.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - CSV Data Driven Tests › Registration fails - empty password" classname="registerCSV.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="registerDataDriven.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chrome" tests="8" failures="0" skipped="8" time="0" errors="0">
+<testcase name="Registration - Data Driven Tests › Valid registration - Female gender" classname="registerDataDriven.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Data Driven Tests › Valid registration - Male gender" classname="registerDataDriven.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Data Driven Tests › Registration fails - empty first name" classname="registerDataDriven.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Data Driven Tests › Registration fails - empty last name" classname="registerDataDriven.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Data Driven Tests › Registration fails - empty email" classname="registerDataDriven.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Data Driven Tests › Registration fails - invalid email format" classname="registerDataDriven.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Data Driven Tests › Registration fails - password too short" classname="registerDataDriven.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Data Driven Tests › Registration fails - empty password" classname="registerDataDriven.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="registerExcel.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chrome" tests="8" failures="0" skipped="8" time="0" errors="0">
+<testcase name="Registration - Excel Data Driven Tests › Register user: John Doe (Male)" classname="registerExcel.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Excel Data Driven Tests › Register user: Emma Smith (Female)" classname="registerExcel.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Excel Data Driven Tests › Register user: David Johnson (Male)" classname="registerExcel.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Excel Data Driven Tests › Register user: Olivia Brown (Female)" classname="registerExcel.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Excel Data Driven Tests › Register user: Michael Lee (Male)" classname="registerExcel.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Excel Data Driven Tests › Register user: Sophia Wilson (Female)" classname="registerExcel.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Excel Data Driven Tests › Register user: Daniel Taylor (Male)" classname="registerExcel.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Registration - Excel Data Driven Tests › Register user: Ava Anderson (Female)" classname="registerExcel.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="search.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chrome" tests="6" failures="0" skipped="6" time="0" errors="0">
+<testcase name="4.4 Product Search › TC-SRCH-01: Search with valid keyword @smoke" classname="search.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.4 Product Search › TC-SRCH-02: Search with no results" classname="search.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.4 Product Search › TC-SRCH-03: Search with empty input" classname="search.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.4 Product Search › TC-SRCH-04: Search is case-insensitive" classname="search.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.4 Product Search › TC-SRCH-05: Search result sorting" classname="search.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.4 Product Search › TC-SRCH-06: Search result pagination" classname="search.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="wishlist.spec.ts" timestamp="2026-05-10T01:28:19.188Z" hostname="chrome" tests="5" failures="0" skipped="5" time="0" errors="0">
+<testcase name="4.6 Wishlist › TC-WISH-01: Add item to wishlist @smoke" classname="wishlist.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.6 Wishlist › TC-WISH-02: View wishlist" classname="wishlist.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.6 Wishlist › TC-WISH-03: Add to cart from wishlist" classname="wishlist.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.6 Wishlist › TC-WISH-04: Remove item from wishlist" classname="wishlist.spec.ts">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="4.6 Wishlist › TC-WISH-05: Guest can add item to wishlist" classname="wishlist.spec.ts">
+<skipped>
+</skipped>
 </testcase>
 </testsuite>
 </testsuites>

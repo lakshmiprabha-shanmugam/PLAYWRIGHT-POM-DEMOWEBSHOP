@@ -1,17 +1,15 @@
 import { test, expect, Page } from '@playwright/test';
 import { CartPage } from '../pages/CartPage';
-import { url } from './config/testConfig';
+import { ProductPage } from '../pages/ProductPage';
+import { SearchPage } from '../pages/SearchPage';
 //Test comment
 // Searches for a product and adds the first result to cart
 async function addProductToCart(page: Page, searchTerm: string): Promise<void> {
-  await page.goto(url(`/search?q=${encodeURIComponent(searchTerm)}`));
-  await page.locator('.product-title a').first().click();
-  const addToCartButton = page.locator('.product-essential input[value="Add to cart"]').first();
-  await addToCartButton.waitFor({ state: 'visible' });
-  await Promise.all([
-    page.waitForResponse(resp => resp.url().includes('/addproducttocart/') && resp.status() === 200),
-    addToCartButton.click(),
-  ]);
+  const searchPage = new SearchPage(page);
+  const productPage = new ProductPage(page);
+
+  await searchPage.openFirstResultFor(searchTerm);
+  await productPage.addToCart();
 }
 
 test.describe('4.5 Shopping Cart', () => {
@@ -123,6 +121,18 @@ test.describe('4.5 Shopping Cart', () => {
     await cartPage.continueShoppingButton.click();
 
     await expect(page).not.toHaveURL(/\/cart/);
+  });
+
+  test('TC-CART-09: Quantity zero removes item from cart', async ({ page }) => {
+    const cartPage = new CartPage(page);
+
+    await addProductToCart(page, 'Blue Jeans');
+    await cartPage.navigate();
+
+    await cartPage.updateQuantity(0, 0);
+
+    await expect(cartPage.emptyCartMessage).toBeVisible();
+    expect(await cartPage.getItemCount()).toBe(0);
   });
 
 });
