@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  playwright-tests:
+    build: .
+    environment:
+      - CI=true
+      - BASE_URL=https://demowebshop.tricentis.com/
+    volumes:
+      - ./allure-results:/app/allure-results
+      - ./test-results:/app/test-results
+      - ./playwright-report:/app/playwright-report
+    command: npm test
