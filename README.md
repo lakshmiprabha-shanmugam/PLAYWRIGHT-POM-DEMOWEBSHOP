@@ -172,6 +172,125 @@ Run accessibility tests with Allure reporting:
 npm run test:a11y:allure
 ```
 
+## Docker
+
+### Overview
+
+The project includes a `Dockerfile` and `docker-compose.yml` so tests can run inside a container without installing Node.js or Playwright browsers locally.
+
+### Prerequisites
+
+- Docker Desktop installed and running
+
+### Build and Run with Docker Compose (Recommended)
+
+Build the image and run tests in one command:
+
+```powershell
+docker compose up --build
+```
+
+To rebuild from scratch (force a fresh image):
+
+```powershell
+docker compose down --rmi local
+docker compose up --build
+```
+
+### Run with Plain Docker
+
+Build the image manually:
+
+```powershell
+docker build -t playwright-pom-demowebshop-playwright-tests .
+```
+
+Run the container:
+
+```powershell
+docker run --rm `
+  -e CI=true `
+  -e BASE_URL=https://demowebshop.tricentis.com/ `
+  -v "${PWD}/allure-results:/app/allure-results" `
+  -v "${PWD}/test-results:/app/test-results" `
+  -v "${PWD}/playwright-report:/app/playwright-report" `
+  playwright-pom-demowebshop-playwright-tests
+```
+
+### Viewing Reports After a Run
+
+The following folders are mounted as volumes and populated on your host machine after the container finishes:
+
+- `allure-results/` — raw Allure data
+- `test-results/` — Playwright failure artifacts
+- `playwright-report/` — Playwright HTML report
+
+Open the Playwright HTML report:
+
+```powershell
+npx playwright show-report
+```
+
+### Running Specific Services
+
+The `docker-compose.yml` defines two services:
+
+| Service | Command | Output folders |
+|---|---|---|
+| `playwright-tests` | `npm test` (full suite) | `allure-results/`, `playwright-report/` |
+| `accessibility-tests` | `npm run test:a11y` | `allure-results/accessibility/`, `playwright-report/accessibility/` |
+
+Run only accessibility tests:
+
+```powershell
+docker compose up --build accessibility-tests
+```
+
+Run only the main test suite:
+
+```powershell
+docker compose up --build playwright-tests
+```
+
+Run both at the same time:
+
+```powershell
+docker compose up --build
+```
+
+Each service writes to its own separate output folders so reports never conflict.
+
+### Troubleshooting
+
+**`docker pull` fails with "repository does not exist"**
+
+This image is built locally and is not hosted on Docker Hub. Do not use `docker pull`. Use `docker compose up --build` instead.
+
+**`docker rmi` fails with "container is using its referenced image"**
+
+A container using the image is still running. Stop and remove it first:
+
+```powershell
+docker rm -f <container-id>
+docker rmi playwright-pom-demowebshop-playwright-tests
+```
+
+Or use Docker Compose to tear everything down cleanly:
+
+```powershell
+docker compose down --rmi local
+```
+
+### Push Image to Docker Hub
+
+To share the image so others can pull it:
+
+```powershell
+docker tag playwright-pom-demowebshop-playwright-tests <your-dockerhub-username>/playwright-pom-demowebshop-playwright-tests
+docker login
+docker push <your-dockerhub-username>/playwright-pom-demowebshop-playwright-tests
+```
+
 ## CI/CD
 
 ### GitHub Actions

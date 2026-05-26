@@ -10,4 +10,15 @@ services:
       - ./allure-results:/app/allure-results
       - ./test-results:/app/test-results
       - ./playwright-report:/app/playwright-report
-    command: npm test
+    command: npx playwright test --grep-invert "@accessibility"
+
+  accessibility-tests:
+    build: .
+    environment:
+      - CI=true
+      - BASE_URL=https://demowebshop.tricentis.com/
+    volumes:
+      - ./allure-results/accessibility:/app/allure-results
+      - ./test-results/accessibility:/app/test-results
+      - ./playwright-report/accessibility:/app/playwright-report
+    command: npm run test:a11y

@@ -34,7 +34,7 @@ jobs:
 
       - name: Run full regression
         id: regression_tests
-        run: npm run test:allure -- --project=${{ matrix.project }}
+        run: npm run test:allure -- --project=${{ matrix.project }} --grep-invert "@accessibility"
         continue-on-error: true
         env:
           BASE_URL           : ${{ secrets.BASE_URL }}
